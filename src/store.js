@@ -1,5 +1,12 @@
-import { createStore } from 'redux';
-import reducer from './reducers/reducer'
- 
+import { createStore, combineReducers } from 'redux';
+import navReducer from './reducers/navReducer'
 
-export default creatStore();
+const rootReducer = combineReducers({
+    nav_reducer: navReducer
+})
+
+
+export default createStore(
+    rootReducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    );

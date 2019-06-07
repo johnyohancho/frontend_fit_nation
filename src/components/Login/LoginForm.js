@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 class LoginForm extends React.Component {
 
@@ -40,6 +41,8 @@ class LoginForm extends React.Component {
                 this.setState({ errors: data.errors })
             } else {
                 localStorage.setItem("token", data.token)
+                this.props.dispatch({ type: 'LOG_IN_OUT' })
+                // this.props.history.push("/")
             }
         })
         e.target.reset()
@@ -68,4 +71,4 @@ class LoginForm extends React.Component {
 
 }
 
-export default LoginForm;
+export default connect()(LoginForm);
