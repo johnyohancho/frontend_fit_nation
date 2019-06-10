@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import './LoginForm.css'
 
 class LoginForm extends React.Component {
 
@@ -52,18 +53,20 @@ class LoginForm extends React.Component {
 
     render() {
         return (
-            <div className='ui container'>
-                <div className='ui segment'>
-                    <h2>Login</h2>
-                    <form id='login-form' className="ui form" onSubmit={this.handleSubmit}>
-                        <label>Username</label>
-                        <input className='ui focus input' type="text" name="username" placeholder="username"
-                            onChange={(e)=> this.setState({ username: e.target.value})}></input>
-                        <label>Password</label>
-                        <input className='ui focus input' type="password" name="password" placeholder="password"
-                            onChange={(e)=> this.setState({ password: e.target.value})}></input>
-                        <button className='ui button' type="submit" value="submit">Login</button>
-                    </form>
+            <div className='loginform-background'>
+                <div className='login-container' className='ui container'>
+                    <div className='ui segment'>
+                        <h2>Login</h2>
+                        <form id='login-form' className="ui form" onSubmit={this.handleSubmit}>
+                            <label>Username</label>
+                            <input className='ui focus input' type="text" name="username" placeholder="username"
+                                onChange={(e)=> this.setState({ username: e.target.value})}></input>
+                            <label>Password</label>
+                            <input className='ui focus input' type="password" name="password" placeholder="password"
+                                onChange={(e)=> this.setState({ password: e.target.value})}></input>
+                            <button className='ui button' type="submit" value="submit">Login</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         )
