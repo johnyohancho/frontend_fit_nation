@@ -8,7 +8,7 @@ import jwt_decode from 'jwt-decode';
 import MealBox from './MealBox/MealBox';
 
 
-class MealWorkout extends React.Component {
+class Meals extends React.Component {
 
     constructor() {
         super()
@@ -209,4 +209,4 @@ let mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps)(MealWorkout);
+export default connect(mapStateToProps)(Meals);

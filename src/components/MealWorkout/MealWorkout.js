@@ -1,6 +1,6 @@
 import React from 'react';
 // import _ from 'lodash';
-import './Meals.css';
+import './MealWorkout.css';
 import CreateFoodForm from './CreateFoodForm/CreateFoodForm';
 import SearchResults from './SearchResults/SearchResults';
 import { connect } from 'react-redux';
