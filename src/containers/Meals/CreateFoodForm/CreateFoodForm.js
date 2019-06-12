@@ -1,6 +1,8 @@
 import React from 'react';
 import 'semantic-ui-css/semantic.min.css'
 import { Dropdown } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import jwt_decode from 'jwt-decode';
 
 const mealTypes = [
     {
@@ -32,6 +34,7 @@ class CreateFoodForm extends React.Component {
     constructor() {
         super()
         this.state = {
+            user_id: null,
             name: '',
             date: '',
             time: '',
@@ -47,11 +50,12 @@ class CreateFoodForm extends React.Component {
     }
 
     componentDidMount() {
-        const now = new Date()
-        let currentDate = `${now.getFullYear()}-${now.getMonth()+1}-${now.getDate()}`;
-        let currentTime = `${now.getHour()}:${now.getMinutes()}:${now.getSeconds()}`;
-
-        console.log(currentDate, currentTime)
+        const token = localStorage.getItem('token')
+        const decoded = jwt_decode(token)
+        
+        this.setState({
+            user_id: decoded.user_id
+        })
     }
 
     displayErrors = () => {
@@ -78,6 +82,7 @@ class CreateFoodForm extends React.Component {
         let currentDate = `${now.getFullYear()}-${now.getMonth()+1}-${now.getDate()}`;
         let currentTime = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
 
+
         this.setState({
             date: currentDate,
             time: currentTime
@@ -94,17 +99,22 @@ class CreateFoodForm extends React.Component {
         .then(data => {
             if (data.errors) {
                 this.setState({ errors: data.errors })
+            } else {
+                console.log(data)
             };
         })
 
         e.target.reset()
+
+        this.props.dispatch({type: "CLEAR_MODE"})
+
     }
 
 
     render() {
         return (
             <div id='create-food-segment' className='ui segment'>
-                <form id='create-food-form' className='ui form'>
+                <form id='create-food-form' className='ui form' onSubmit={this.handleCreateFood}>
                     <div className='required field'>
                         <label>Name</label>
                         <input className='ui focus input' type='text' name='name' placeholder='name'
@@ -118,6 +128,7 @@ class CreateFoodForm extends React.Component {
                             fluid
                             selection
                             options={mealTypes}
+                            onChange={(e, data)=> this.setState({ meal_type: data.value })}
                         />
                     </div>
 
@@ -157,7 +168,7 @@ class CreateFoodForm extends React.Component {
                             onChange={(e)=> this.setState({ sugar: e.target.value })}></input>
                     </div>
 
-                    <div><button id='add-food-button' type='submit' className='ui positive button' onSubmit={this.handleCreateFood}>Add Food</button></div>
+                    <div><button id='add-food-button' type='submit' className='ui positive button'>Add Food</button></div>
                 </form>
             </div>
         )
@@ -165,8 +176,14 @@ class CreateFoodForm extends React.Component {
 
 }
 
+let mapStateToProps = (state) => {
+    let addFoodMode = state.meal_reducer.add_food_mode
+    return {
+        add_food_mode: addFoodMode
+    }
+}
 
 
-export default CreateFoodForm;
+export default connect(mapStateToProps)(CreateFoodForm);
 
 
