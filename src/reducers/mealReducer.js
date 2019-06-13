@@ -1,11 +1,35 @@
-export default (state = { add_food_mode: '', search_results: [], meals: [] }, action) => {
+export default (state = { category: 'meal', add_food_mode: '', search_results: [], meals: [], fields: ["Name", "Date", "Time", "Calories"],
+ 
+  meal_types: [
+    {
+      key: 'Breakfast',
+      text: 'Breakfast',
+      value: 'Breakfast'
+    },
+    {
+      key: 'Lunch',
+      text: 'Lunch',
+      value: 'Lunch'
+    },
+    {
+      key: 'Dinner',
+      text: 'Dinner',
+      value: 'Dinner'
+    },
+    {
+      key: 'Snack',
+      text: 'Snack',
+      value: 'Snack'
+    }
+  ]
+}, action) => {
     switch (action.type) {
         case "SEARCH_FOOD": {
-            return ({...state, add_food_mode: 'search'})
+            return ({...state, add_food_mode: 'search_meal'})
         };
         case "CREATE_FOOD": {
-            if (state.add_food_mode === '' || state.add_food_mode === 'search') {
-                return ({...state, add_food_mode: 'create'})
+            if (state.add_food_mode === '' || state.add_food_mode === 'search_meal') {
+                return ({...state, add_food_mode: 'create_meal'})
             } else {
                 return ({...state, add_food_mode: ''})
             };

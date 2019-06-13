@@ -1,10 +1,12 @@
 import { createStore, combineReducers } from 'redux';
 import navReducer from './reducers/navReducer';
 import mealReducer from './reducers/mealReducer';
+import workoutReducer from './reducers/workoutReducer';
 
 const rootReducer = combineReducers({
     nav_reducer: navReducer,
-    meal_reducer: mealReducer
+    meal_reducer: mealReducer,
+    workout_reducer: workoutReducer
 })
 
 

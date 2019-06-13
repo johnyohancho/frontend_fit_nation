@@ -29,7 +29,7 @@ const NavBar = (props) => {
             <div className="right menu">
                 <div className="item">
                     <div className="ui icon input">
-                    <input type="text" placeholder="Search..." /><i aria-hidden="true" className="search icon"></i>
+                        <input type="text" placeholder="Search..." /><i aria-hidden="true" className="search icon"></i>
                     </div>
                 </div>
                 {props.loggedIn ?

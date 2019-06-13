@@ -4,7 +4,28 @@ import { Dropdown } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import jwt_decode from 'jwt-decode';
 
-
+const mealTypes = [
+    {
+      key: 'Breakfast',
+      text: 'Breakfast',
+      value: 'Breakfast'
+    },
+    {
+      key: 'Lunch',
+      text: 'Lunch',
+      value: 'Lunch'
+    },
+    {
+      key: 'Dinner',
+      text: 'Dinner',
+      value: 'Dinner'
+    },
+    {
+      key: 'Snack',
+      text: 'Snack',
+      value: 'Snack'
+    }
+  ]
 
 class CreateFoodForm extends React.Component {
     
@@ -40,7 +61,7 @@ class CreateFoodForm extends React.Component {
     displayErrors = () => {
         if (this.state.errors.length > 0) {
             return (
-                <div className="form-errors">
+                <div className="login-form-errors">
                     <p>Invalid!</p>
                     <ul>
                         {this.state.errors.map(err => <li>{err}</li>)}
@@ -106,7 +127,7 @@ class CreateFoodForm extends React.Component {
                             placeholder='Choose a Meal Type'
                             fluid
                             selection
-                            options={this.props.dropdown_menu}
+                            options={mealTypes}
                             onChange={(e, data)=> this.setState({ meal_type: data.value })}
                         />
                     </div>

@@ -15,15 +15,11 @@ class CreateFoodForm extends React.Component {
         this.state = {
             user_id: null,
             name: '',
+            workout_type: '',
             date: '',
             time: '',
-            meal_type: '',
-            calories: '',
-            weight: '',
-            protein: '',
-            carbs: '',
-            fat: '',
-            sugar: '',
+            sets: null,
+            reps: null,
             errors: []
         }
     }
@@ -53,7 +49,7 @@ class CreateFoodForm extends React.Component {
     }
 
 
-    handleCreateFood = (e) => {
+    handleCreateWork = (e) => {
 
         e.preventDefault()
 
@@ -67,7 +63,7 @@ class CreateFoodForm extends React.Component {
             time: currentTime
         })
 
-        fetch('http://localhost:3000/meals',{
+        fetch('http://localhost:3000/user_workouts',{
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -79,7 +75,7 @@ class CreateFoodForm extends React.Component {
             if (data.errors) {
                 this.setState({ errors: data.errors })
             } else {
-                this.props.dispatch({type: "ADD_MEAL", data: data})
+                console.log(data)
             };
         })
 
@@ -93,7 +89,7 @@ class CreateFoodForm extends React.Component {
     render() {
         return (
             <div id='create-food-segment' className='ui segment'>
-                <form id='create-food-form' className='ui form' onSubmit={this.handleCreateFood}>
+                <form id='create-food-form' className='ui form' onSubmit={this.handleCreateWorkout}>
                     <div className='required field'>
                         <label>Name</label>
                         <input className='ui focus input' type='text' name='name' placeholder='name'
@@ -101,53 +97,29 @@ class CreateFoodForm extends React.Component {
                     </div>
 
                     <div className='required field'>
-                        <label>Meal Type</label>
+                        <label>Workout Type</label>
                         <Dropdown
-                            placeholder='Choose a Meal Type'
+                            placeholder='Choose a Workout Type'
                             fluid
                             selection
                             options={this.props.dropdown_menu}
-                            onChange={(e, data)=> this.setState({ meal_type: data.value })}
+                            onChange={(e, data)=> this.setState({ workout_type: data.value })}
                         />
                     </div>
 
                     <div className='required field'>
-                        <label>Calories</label>
-                        <input className='ui focus input' type='number' name='calories' placeholder='kcal'
-                            onChange={(e)=> this.setState({ calories: e.target.value })}></input>
+                        <label>Sets</label>
+                        <input className='ui focus input' type='number' name='sets' placeholder='qty'
+                            onChange={(e)=> this.setState({ sets: e.target.value })}></input>
                     </div>
 
                     <div className='required field'>
-                        <label>Weight</label> 
-                        <input className='ui focus input' type='number' name='weight' placeholder='g'
-                            onChange={(e)=> this.setState({ weight: e.target.value })}></input>
+                        <label>Reps</label> 
+                        <input className='ui focus input' type='number' name='reps' placeholder='qty'
+                            onChange={(e)=> this.setState({ reps: e.target.value })}></input>
                     </div>
 
-                    <div className='required field'>
-                        <label>Protein</label>
-                        <input className='ui focus input' type='number' name='protein' placeholder='g'
-                            onChange={(e)=> this.setState({ protein: e.target.value })}></input>    
-                    </div>
-
-                    <div className='required field'>
-                        <label>Carbs</label>
-                        <input className='ui focus input' type='number' name='carbs' placeholder='g'
-                            onChange={(e)=> this.setState({ carbs: e.target.value })}></input>
-                    </div>
-
-                    <div className='required field'>
-                        <label>Fat</label>
-                        <input className='ui focus input' type='number' name='fat' placeholder='g'
-                            onChange={(e)=> this.setState({ fat: e.target.value })}></input>    
-                    </div>
-
-                    <div className='field'>
-                        <label>Sugar</label>
-                        <input className='ui focus input' type='number' name='sugar' placeholder='g'
-                            onChange={(e)=> this.setState({ sugar: e.target.value })}></input>
-                    </div>
-
-                    <div><button id='add-food-button' type='submit' className='ui positive button'>Add Food</button></div>
+                    <div><button id='add-workout-button' type='submit' className='ui positive button'>Add Workout</button></div>
                 </form>
             </div>
         )
