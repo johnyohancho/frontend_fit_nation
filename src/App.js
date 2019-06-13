@@ -10,6 +10,7 @@ import Meals from './containers/Meals/Meals';
 import FitnessGurus from './containers/FitnessGurus/FitnessGurus';
 import Bets from './containers/Bets/Bets';
 import { connect } from 'react-redux';
+import { Sticky } from 'semantic-ui-react';
 
 
 class App extends React.Component {
@@ -24,7 +25,9 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <NavBar />
+        {/* <Sticky> */}
+          <NavBar />
+        {/* </Sticky> */}
         <Switch>
 
           <Route exact path='/login' render={() => (

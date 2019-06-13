@@ -1,25 +1,28 @@
 import React from 'react';
+import DailyProgress from '../../components/DailyProgress/DailyProgress';
+import HistoryProgress from '../../components/HistoryProgress/HistoryProgress';
+import UserProfile from '../../components/UserProfile/UserProfile';
 
 
 const MainContainer = () => {
     return (
-        <div className='ui grid'>
-            <h2 className='ui header'>Main</h2>
-            <div className='eight wide column'>
-                <div className='row'>
-                    <div className='ui container'>
-                        
+        <div className='ui divided two column grid'>
+            <div className='stretched row'>
+                <div className='six wide column'>
+                    <div className='ui segment'>
+                        <h3 className='ui header'>Profile</h3>
+                        <UserProfile />
                     </div>
                 </div>
-                <div className='row'>
-                    <div className='ui container'>
-
+                <div className='ten wide column'>
+                    <div className='ui segment'>
+                        <h3 className='ui header'>Daily Progress</h3>
+                            <DailyProgress />
                     </div>
-                </div>
-            </div>
-            <div className='eight wide column'>
-                <div className='ui container'>
-
+                    <div className='ui segment'>
+                        <h3 className='ui header'>History Progress</h3>
+                            <HistoryProgress />
+                    </div>
                 </div>
             </div>
         </div>
