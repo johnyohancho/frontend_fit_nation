@@ -106,7 +106,7 @@ class CreateFoodForm extends React.Component {
                             placeholder='Choose a Meal Type'
                             fluid
                             selection
-                            options={this.props.dropdown_menu}
+                            options={this.props.types}
                             onChange={(e, data)=> this.setState({ meal_type: data.value })}
                         />
                     </div>
@@ -156,9 +156,9 @@ class CreateFoodForm extends React.Component {
 }
 
 let mapStateToProps = (state) => {
-    let addFoodMode = state.meal_reducer.add_food_mode
+    let mealTypes = state.meal_reducer.meal_types
     return {
-        add_food_mode: addFoodMode
+        types: mealTypes
     }
 }
 

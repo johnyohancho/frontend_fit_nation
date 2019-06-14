@@ -18,7 +18,11 @@ class MainContainer extends React.Component {
 
     componentDidMount() {
         const userId = jwt_decode(localStorage.getItem('token')).user_id
-        getUserData(userId).then((data) => this.props.dispatch({ type: "GET_MEALS", data: data.meals}))
+        getUserData(userId).then((data) => {
+            this.props.dispatch({ type: "CLEAR_USER_DATA", data: null })
+            this.props.dispatch({ type: "GET_USER_DATA", data: data })
+        }
+        )
     }
 
     render() {

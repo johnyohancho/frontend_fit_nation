@@ -29,10 +29,12 @@ class Meals extends React.Component {
 }
 
 let mapStateToProps = (state) => {
-
     let mealAddMode = state.meal_reducer.add_mode
     let mealSearchResults = state.meal_reducer.search_results
-    let meals = state.meal_reducer.meals
+    let mealsList = []
+    if (state.session_reducer.userData) {
+        mealsList = state.session_reducer.userData.meals
+    };
     let mealTypes = state.meal_reducer.meal_types
     let mealFields = state.meal_reducer.fields
     let mealCategory = state.meal_reducer.category
@@ -40,7 +42,7 @@ let mapStateToProps = (state) => {
     return {
         add_mode: mealAddMode,
         search_results: mealSearchResults,
-        meals: meals,
+        meals: mealsList,
         types: mealTypes,
         fields: mealFields,
         category: mealCategory

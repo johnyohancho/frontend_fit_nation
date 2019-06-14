@@ -26,10 +26,12 @@ class Workouts extends React.Component {
 }
 
 let mapStateToProps = (state) => {
-
     let workoutAddMode = state.workout_reducer.add_mode
     let workoutSearchResults = state.workout_reducer.search_results
-    let workouts = state.workout_reducer.workouts
+    let workoutsList = []
+    if (state.session_reducer.userData) {
+        workoutsList = state.session_reducer.userData.user_workouts
+    };
     let workoutTypes = state.workout_reducer.workout_types
     let workoutFields = state.workout_reducer.fields
     let workoutCategory = state.workout_reducer.category
@@ -37,7 +39,7 @@ let mapStateToProps = (state) => {
     return {
         add_mode: workoutAddMode,
         search_results: workoutSearchResults,
-        workouts: workouts,
+        workouts: workoutsList,
         types: workoutTypes,
         fields: workoutFields,
         category: workoutCategory

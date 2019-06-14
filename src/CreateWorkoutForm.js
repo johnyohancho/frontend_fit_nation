@@ -14,6 +14,7 @@ class CreateFoodForm extends React.Component {
         super()
         this.state = {
             user_id: null,
+            workout_id: 2,
             name: '',
             workout_type: '',
             date: '',
@@ -49,7 +50,7 @@ class CreateFoodForm extends React.Component {
     }
 
 
-    handleCreateWork = (e) => {
+    handleCreateWorkout = (e) => {
 
         e.preventDefault()
 
@@ -75,7 +76,7 @@ class CreateFoodForm extends React.Component {
             if (data.errors) {
                 this.setState({ errors: data.errors })
             } else {
-                console.log(data)
+                this.props.dispatch({type: "ADD_WORKOUT", data: data})
             };
         })
 
@@ -102,7 +103,7 @@ class CreateFoodForm extends React.Component {
                             placeholder='Choose a Workout Type'
                             fluid
                             selection
-                            options={this.props.dropdown_menu}
+                            options={this.props.types}
                             onChange={(e, data)=> this.setState({ workout_type: data.value })}
                         />
                     </div>
@@ -128,9 +129,9 @@ class CreateFoodForm extends React.Component {
 }
 
 let mapStateToProps = (state) => {
-    let addFoodMode = state.meal_reducer.add_food_mode
+    let workoutTypes = state.workout_reducer.workout_types
     return {
-        add_food_mode: addFoodMode
+        types: workoutTypes
     }
 }
 

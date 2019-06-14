@@ -49,18 +49,13 @@ class MealWorkout extends React.Component {
       }
 
       handleClick = (e) => {
-          this.props.dispatch({ type: `CREATE_${this.props.category}` })
+          let createType = `CREATE_${this.props.category.toUpperCase()}`
+          this.props.dispatch({ type: createType })
       }
 
       deleteRecord = (e) => {
-          console.log('need to delete!', e.target)
+          console.log('need to delete!', e.target.value)
       }
-
-      handleClick = (e) => {
-          this.props.dispatch({ type: `CREATE_${this.props.category}` })
-      }
-
-
     
     render() {
         return (
@@ -76,11 +71,12 @@ class MealWorkout extends React.Component {
                                                     {this.props.fields.map(field => 
                                                         <th className="">{field}</th>    
                                                     )}
+                                                    <th className=""><i aria-hidden="true" className="trash alternate outline link icon" onClick={null}></i></th>
                                                 </tr>
                                             </thead>
                                             <tbody className="">
-                                                {this.props.records.length > 0 ? 
-                                                    this.props.records[0].filter(record =>
+                                                {this.props.records && this.props.records.length > 0 ? 
+                                                    this.props.records.filter(record =>
                                                         record.meal_type === item.key || record.workout_type === item.key)
                                                         .map(record => 
                                                         <Records record={record} fields={this.props.fields} deleteRecord={this.deleteRecord}/>
@@ -108,11 +104,11 @@ class MealWorkout extends React.Component {
                         {(() => {
                             switch (this.props.mode) {
                             case "create_meal":
-                                return <CreateFoodForm dropdown_menu={this.props.types}/>;
+                                return <CreateFoodForm />;
                             case "search_meal":
                                 return <SearchResults />;
                             case "create_workout":
-                                return <CreateWorkoutForm dropdown_menu={this.props.types}/>;
+                                return <CreateWorkoutForm />;
                             case "search_workout":
                                 return <SearchResults />;
                             default:

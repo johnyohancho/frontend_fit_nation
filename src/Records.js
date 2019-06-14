@@ -9,6 +9,7 @@ const Records = (props) => {
                 <th className="">-</th>
                 <th className="">-</th>
                 <th className="">-</th>
+                <th className="">-</th>
             </tr>
         )
     } else if (props.category === 'meal'){
@@ -18,6 +19,9 @@ const Records = (props) => {
                 <th className="">{props.record.date}</th>
                 <th className="">{props.record.time}</th>
                 <th className="">{props.record.calories}</th>
+                <th className="">
+                    <i aria-hidden="true" className="delete link icon" onClick={(e)=> props.deleteRecord(e)}></i>
+                </th>
             </tr>
         )
     } else {
@@ -27,7 +31,9 @@ const Records = (props) => {
                 <th className="">{props.record.date}</th>
                 <th className="">{props.record.sets}</th>
                 <th className="">{props.record.reps}</th>
-                <i aria-hidden="true" class="delete link icon" onClick={(e)=> props.deleteRecord(e)}></i>
+                <th className="">
+                    <i aria-hidden="true" className="delete link icon" onClick={(e)=> props.deleteRecord(e)}></i>
+                </th>
             </tr>
         )
     };
