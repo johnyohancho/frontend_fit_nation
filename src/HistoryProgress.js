@@ -19,6 +19,11 @@ class HistoryProgress extends React.Component {
             },
             toolbar: {
               show: false
+            },
+            events: {
+                dataPointSelection: function(dataPointSelection, chartContext, config) {
+                    // ...
+                  }
             }
           },
           colors: ['#77B6EA', '#545454', '#B7FFB7'],
@@ -79,6 +84,10 @@ class HistoryProgress extends React.Component {
           }
         ],
       }
+    }
+
+    handleSelection = () => {
+        console.log("selected!")
     }
 
     render() {

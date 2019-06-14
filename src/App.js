@@ -1,26 +1,26 @@
 import React from 'react';
-import './App.css';
+import './css/App.css';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import NavBar from './components/NavBar/NavBar'
-import Home from './components/Home/Home'
-import LoginForm from './components/Login/LoginForm'
-import MainContainer from './containers/Main/MainContainer'
-import Workouts from './containers/Workouts/Workouts';
-import Meals from './containers/Meals/Meals';
-import FitnessGurus from './containers/FitnessGurus/FitnessGurus';
-import Bets from './containers/Bets/Bets';
+import NavBar from './NavBar'
+import Home from './Home'
+import LoginForm from './LoginForm'
+import MainContainer from './MainContainer'
+import Workouts from './Workouts';
+import Meals from './Meals';
+import FitnessGurus from './FitnessGurus';
+import Bets from './Bets';
 import { connect } from 'react-redux';
 import { Sticky } from 'semantic-ui-react';
 
 
 class App extends React.Component {
 
-  componentDidMount() {
-    fetch('https://wger.de/api/v2/exercise/?status=2')
-    .then(res => res.json())
-    .then(data => console.log(data))
-    .catch(error => console.error(error))
-  }
+  // componentDidMount() {
+  //   fetch('https://wger.de/api/v2/exercise/?status=2')
+  //   .then(res => res.json())
+  //   .then(data => console.log(data))
+  //   .catch(error => console.error(error))
+  // }
 
   render() {
     return (
@@ -88,7 +88,7 @@ class App extends React.Component {
 }
 
 let mapStateToProps = (state) => {
-  let loginStatus = state.nav_reducer.loggedIn
+  let loginStatus = state.session_reducer.loggedIn
   return {
       loggedIn: loginStatus
   }

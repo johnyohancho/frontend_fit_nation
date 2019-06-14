@@ -1,5 +1,5 @@
 #root > div > div.loginform-background {
-    background-image: url(../../home_background.jpg);
+    background-image: url(../home_background.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

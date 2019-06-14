@@ -1,4 +1,4 @@
-export default (state = { category: 'meal', add_food_mode: '', search_results: [], meals: [], fields: ["Name", "Date", "Time", "Calories"],
+export default (state = { category: 'Meal', add_mode: '', search_results: [], meals: [], fields: ["Name", "Date", "Time", "Calories"],
  
   meal_types: [
     {
@@ -24,10 +24,10 @@ export default (state = { category: 'meal', add_food_mode: '', search_results: [
   ]
 }, action) => {
     switch (action.type) {
-        case "SEARCH_FOOD": {
+        case "SEARCH_MEAL": {
             return ({...state, add_food_mode: 'search_meal'})
         };
-        case "CREATE_FOOD": {
+        case "CREATE_MEAL": {
             if (state.add_food_mode === '' || state.add_food_mode === 'search_meal') {
                 return ({...state, add_food_mode: 'create_meal'})
             } else {

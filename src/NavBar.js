@@ -1,5 +1,5 @@
 import React from 'react';
-import './NavBar.css'
+import './css/NavBar.css'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -33,7 +33,7 @@ const NavBar = (props) => {
                     </div>
                 </div>
                 {props.loggedIn ?
-                <Link to='/' className='item' onClick={() => props.dispatch({ type: 'LOG_IN_OUT' })}>
+                <Link to='/' className='item' onClick={() => props.dispatch({ type: 'USER_LOGOUT' })}>
                     <div className='content'>Logout</div>
                 </Link>
                 :
@@ -48,7 +48,7 @@ const NavBar = (props) => {
 
 
 let mapStateToProps = (state) => {
-    let loginStatus = state.nav_reducer.loggedIn
+    let loginStatus = state.session_reducer.loggedIn
     return {
         loggedIn: loginStatus
     }
