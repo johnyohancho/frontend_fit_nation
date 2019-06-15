@@ -7,6 +7,7 @@ export default (state = { loggedIn: !!localStorage.getItem('token'), userData: {
               })
         }
         case "GET_USER_DATA": {
+            console.log("hey")
             return Object.assign({}, state, {
                 userData: {
                     ...state.userData,
@@ -37,6 +38,28 @@ export default (state = { loggedIn: !!localStorage.getItem('token'), userData: {
                     ...state.userData,
                     ...{
                         user_workouts: newWorkoutsData
+                    }
+                }
+              })
+        }
+        case "DELETE_MEAL": {
+            let newMealsData = [...state.userData.meals].filter(meal => meal.id != action.data.id)
+            return Object.assign({}, state, {
+                userData: {
+                    ...state.userData,
+                    ...{
+                        user_meals: newMealsData
+                    }
+                }
+              })
+        }
+        case "DELETE_WORKOUT": {
+            let newWorkoutsData = [...state.userData.user_workouts].filter(workout => workout.id != action.data.id)
+            return Object.assign({}, state, {
+                userData: {
+                    ...state.userData,
+                    ...{
+                        user_meals: newWorkoutsData
                     }
                 }
               })

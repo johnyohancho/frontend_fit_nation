@@ -53,8 +53,19 @@ class MealWorkout extends React.Component {
           this.props.dispatch({ type: createType })
       }
 
-      deleteRecord = (e) => {
-          console.log('need to delete!', e.target.value)
+      deleteRecord = (e, record, category) => {
+          let endpoint = ''
+          if (category === 'Meal') {
+            endpoint = category.toLowerCase() + 's'
+          } else {
+            endpoint = 'user_' + category.toLowerCase() + 's'
+          };
+          let deleteType = `DELETE_${category.toUpperCase()}`
+          console.log(`http://localhost:3000/${endpoint}/${record.id}`)
+          fetch(`http://localhost:3000/${endpoint}/${record.id}`, {
+              method: 'DELETE'
+          })
+          .then(() => this.props.dispatch({ type: deleteType, data: record }))
       }
     
     render() {
@@ -79,10 +90,10 @@ class MealWorkout extends React.Component {
                                                     this.props.records.filter(record =>
                                                         record.meal_type === item.key || record.workout_type === item.key)
                                                         .map(record => 
-                                                        <Records record={record} fields={this.props.fields} deleteRecord={this.deleteRecord}/>
+                                                        <Records record={record} category={this.props.category} fields={this.props.fields} deleteRecord={this.deleteRecord}/>
                                                         )
                                                     :
-                                                    <Records record={null} fields={this.props.fields} deleteRecord={this.deleteRecord}/>
+                                                    <Records record={null} category={this.props.category} fields={this.props.fields} deleteRecord={this.deleteRecord}/>
                                                     }
                                             </tbody>
                                     </table>
