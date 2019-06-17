@@ -47,7 +47,7 @@ export default (state = { category: 'Workout', add_mode: '', search_results: [],
         case "CLEAR_MODE": {
             return ({...state, add_mode: ''})
         }
-        case "SEARCH_RESULTS": {
+        case "SEARCH_WORKOUT_RESULTS": {
             state.search_results = []
             let results = [...state.search_results, action.data]
             return ({...state, search_results: results })

@@ -25,27 +25,32 @@ export default (state = { category: 'Meal', add_mode: '', search_results: [], me
 }, action) => {
     switch (action.type) {
         case "SEARCH_MEAL": {
-            return ({...state, add_mode: 'search_meal'})
-        };
+          return Object.assign({}, state, {
+            add_mode: 'search_meal'
+          })
+        }
         case "CREATE_MEAL": {
-            if (state.add_mode === '' || state.add_mode === 'search_meal') {
-                return ({...state, add_mode: 'create_meal'})
-            } else {
-                return ({...state, add_mode: ''})
-            };
-        };
+          if (state.add_mode === '' || state.add_mode === 'search_meal') {
+            return Object.assign({}, state, {
+              add_mode: 'create_meal'
+            })
+          } else {
+            return Object.assign({}, state, {
+              add_mode: ''
+            })
+          }
+        } 
         case "CLEAR_MODE": {
-            return ({...state, add_mode: ''})
+          return Object.assign({}, state, {
+            add_mode: ''
+          })
         }
-        case "SEARCH_RESULTS": {
-            state.search_results = []
-            let results = [...state.search_results, action.data]
-            return ({...state, search_results: results })
+        case "SEARCH_MEAL_RESULTS": {
+          return Object.assign({}, state, {
+            search_results:
+              action.data
+          })
         }
-        // case "ADD_MEAL": {
-        //     let mealsData = [...state.meals[0], action.data]
-        //     return ({...state, meals: [mealsData] })
-        // }
         default: return state;
     }
 }

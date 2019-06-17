@@ -1,21 +1,28 @@
 import React from 'react';
 import ResultCard from './ResultCard';
+import { connect } from 'react-redux';
 
 
 
 const SearchResults = (props) => {
     return (
         <div className='ui container'>
-            {console.log(props)}
-            {/* {props.search_results[0] === undefined ?
+            {props.search_results === undefined ?
             null
             :
-            props.search_results[0].map(resultData => <ResultCard result={resultData}/>)
-            } */}
+            props.search_results.map(resultData => <ResultCard result={resultData}/>)
+            }
         </div>
     )
 };
 
+let mapStateToProps = (state) => {
+    let searchResults = state.meal_reducer.search_results
+    return {
+        search_results: searchResults
+    }
+}
 
 
-export default SearchResults;
+
+export default connect(mapStateToProps)(SearchResults);

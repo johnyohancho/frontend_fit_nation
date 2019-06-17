@@ -41,11 +41,12 @@ class MealWorkout extends React.Component {
     handleSearch = (e) => {
         e.preventDefault()
         let searchValue = this.state.searchTerm.replace(/\s/g, "%20")
+        let category = this.props.category.toUpperCase()
 
         fetch(`https://api.edamam.com/api/food-database/parser?ingr=${searchValue}&app_id=a2fa636f&app_key=73b94865beb211abba81ba8d13b6a2a0%20`)
         .then(res => res.json())
-        .then(data => this.props.dispatch({type: "SEARCH_RESULTS", data: data.hints}))
-        this.props.dispatch({type: `SEARCH_${this.props.category}`})
+        .then(data => this.props.dispatch({type: `SEARCH_${category}_RESULTS`, data: data.hints}))
+        this.props.dispatch({type: `SEARCH_${category}`})
       }
 
       handleClick = (e) => {
@@ -61,7 +62,7 @@ class MealWorkout extends React.Component {
             endpoint = 'user_' + category.toLowerCase() + 's'
           };
           let deleteType = `DELETE_${category.toUpperCase()}`
-          console.log(`http://localhost:3000/${endpoint}/${record.id}`)
+        //   console.log(`http://localhost:3000/${endpoint}/${record.id}`)
           fetch(`http://localhost:3000/${endpoint}/${record.id}`, {
               method: 'DELETE'
           })
@@ -132,6 +133,7 @@ class MealWorkout extends React.Component {
         )
     }
 }
+
 
 
 export default connect()(MealWorkout);
