@@ -90,7 +90,8 @@ class CreateFoodForm extends React.Component {
     render() {
         return (
             <div id='create-food-segment' className='ui segment'>
-                <form id='create-food-form' className='ui form' onSubmit={this.handleCreateWorkout}>
+                { this.displayErrors() }
+                <form id='create-workout-form' className='ui form' onSubmit={this.handleCreateWorkout}>
                     <div className='required field'>
                         <label>Name</label>
                         <input className='ui focus input' type='text' name='name' placeholder='name'

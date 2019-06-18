@@ -11,12 +11,13 @@ class CreateFoodForm extends React.Component {
     
 
     constructor() {
+        const now = new Date()
         super()
         this.state = {
             user_id: null,
             name: '',
-            date: '',
-            time: '',
+            date: `${now.getFullYear()}-${now.getMonth()+1}-${now.getDate()}`,
+            time: `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`,
             meal_type: '',
             calories: '',
             weight: '',
@@ -57,15 +58,20 @@ class CreateFoodForm extends React.Component {
 
         e.preventDefault()
 
-        const now = new Date()
-        let currentDate = `${now.getFullYear()}-${now.getMonth()+1}-${now.getDate()}`;
-        let currentTime = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
+        // const now = new Date()
+        // let currentDate = `${now.getFullYear()}-${now.getMonth()+1}-${now.getDate()}`;
+        // let currentTime = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
+        // debugger
+
+        // console.log("Current Date", typeof currentDate)
+        // console.log("Current Time", typeof currentTime)
 
 
-        this.setState({
-            date: currentDate,
-            time: currentTime
-        })
+        // this.setState({
+        //     date: currentDate,
+        //     time: currentTime
+        // })
+        console.log("data being fed in",this.state)
 
         fetch('http://localhost:3000/meals',{
             method: "POST",
@@ -91,8 +97,10 @@ class CreateFoodForm extends React.Component {
 
 
     render() {
+
         return (
             <div id='create-food-segment' className='ui segment'>
+                { this.displayErrors() }
                 <form id='create-food-form' className='ui form' onSubmit={this.handleCreateFood}>
                     <div className='required field'>
                         <label>Name</label>

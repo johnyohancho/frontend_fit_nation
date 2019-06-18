@@ -15,12 +15,12 @@ const NavBar = (props) => {
             <Link to='/meals' className='item'>
                 <div className='content'>Meals</div>
             </Link>
-            <Link to='/bets' className='item'>
+            {/* <Link to='/bets' className='item'>
                 <div className='content'>Bets</div>
             </Link>
             <Link to='/fitness_gurus' className='item'>
                 <div className='content'>Fitness Gurus</div>
-            </Link>
+            </Link> */}
             <div className='ui center aligned container'>
                 <Link to='/' className='item'>
                     <img src='Fit Nation Logo.jpg' alt="oops"></img>

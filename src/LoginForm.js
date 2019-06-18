@@ -57,6 +57,7 @@ class LoginForm extends React.Component {
                 <div className='ui two column grid'>
                     <div className='four wide column'>
                         <div className='ui segment'>
+                            { this.displayErrors() }
                             <h2>Login</h2>
                             <form id='login-form' className="ui form" onSubmit={this.handleSubmit}>
                                 <label>Username</label>

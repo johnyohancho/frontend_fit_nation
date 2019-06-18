@@ -1,5 +1,5 @@
 
-export default (state = { loggedIn: !!localStorage.getItem('token'), userData: {} }, action) => {
+export default (state = { loggedIn: !!localStorage.getItem('token'), userData: {}, editUserOpen: false }, action) => {
     switch (action.type) {
         case "USER_LOGIN": {
             return Object.assign({}, state, {
@@ -7,6 +7,7 @@ export default (state = { loggedIn: !!localStorage.getItem('token'), userData: {
               })
         }
         case "GET_USER_DATA": {
+            console.log(action.data)
             return Object.assign({}, state, {
                 userData: {
                     ...state.userData,
@@ -20,13 +21,12 @@ export default (state = { loggedIn: !!localStorage.getItem('token'), userData: {
               })
         }
         case "ADD_MEAL": {
+            console.log(action.data)
             let newMealsData = [...state.userData.meals, action.data]
             return Object.assign({}, state, {
                 userData: {
                     ...state.userData,
-                    ...{
-                        meals: newMealsData
-                    }
+                    meals: newMealsData
                 }
               })
         }
@@ -35,21 +35,18 @@ export default (state = { loggedIn: !!localStorage.getItem('token'), userData: {
             return Object.assign({}, state, {
                 userData: {
                     ...state.userData,
-                    ...{
-                        user_workouts: newWorkoutsData
-                    }
+                    user_workouts: newWorkoutsData
                 }
               })
         }
         case "DELETE_MEAL": {
             let newMealsData = [...state.userData.meals].filter(meal => meal.id !== action.data.id)
             console.log(newMealsData)
+            console.log([...state.userData.meals])
             return Object.assign({}, state, {
                 userData: {
                     ...state.userData,
-                    ...{
-                        user_meals: newMealsData
-                    }
+                    meals: newMealsData
                 }
               })
         }
@@ -58,12 +55,33 @@ export default (state = { loggedIn: !!localStorage.getItem('token'), userData: {
             return Object.assign({}, state, {
                 userData: {
                     ...state.userData,
-                    ...{
-                        user_meals: newWorkoutsData
-                    }
+                    user_workouts: newWorkoutsData
                 }
               })
         }
+        case "UPDATE_USER_DATA": {
+            let newUsername = action.data.username
+            let newPassword = action.data.password_digest
+            let newName = action.data.name
+            let newEmail = action.data.email
+            let newDescription = action.data.description
+
+            return Object.assign({}, state, {
+                userData: {
+                    ...state.userData,
+                    username: newUsername,
+                    password_digest: newPassword,
+                    name: newName,
+                    email: newEmail,
+                    description: newDescription
+                }
+            })
+        }
+        // case "CHECK_DAILYSNAP_EXIST": {
+        //     return Object.assign({}, state, {
+        //         loggedIn: true
+        //       })
+        // }
         default: return state;
     }
 }
