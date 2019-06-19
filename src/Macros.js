@@ -1,14 +1,16 @@
 import React from 'react';
 import { Container } from 'semantic-ui-react';
 import Chart from 'react-apexcharts';
+import { connect } from 'react-redux';
 
 
 class Macros extends React.Component {
 
-    constructor(props) {
-        super(props);
+    constructor() {
+        super()
+        console.log('constructor called!')
 
-        this.state = {
+    this.state = {
         options: {
             chart: {
             stacked: true,
@@ -17,21 +19,21 @@ class Macros extends React.Component {
             bar: {
                 horizontal: true,
             },
-
+    
             },
             stroke: {
             width: 1,
             colors: ['#fff']
             },
-
+    
             title: {
             text: 'Today\'s Macros'
             },
             xaxis: {
-            categories: ["calories", "protein", "carbs", "fats"],
+            categories: ["protein", "carbs", "fats"],
             labels: {
                 formatter: function (val) {
-                return val + "K"
+                return val + "g"
                 }
             }
             },
@@ -39,49 +41,48 @@ class Macros extends React.Component {
             title: {
                 text: undefined
             },
-
+    
             },
             tooltip: {
             y: {
                 formatter: function (val) {
-                return val + "K"
+                return val + " (g)"
                 }
             }
             },
             fill: {
             opacity: 1
-
+    
             },
-
+    
             legend: {
             position: 'top',
             horizontalAlign: 'left',
             offsetX: 40
             }
-        },
-        series: [{
-            name: 'Consumed',
-            data: [44, 55, 41]
-        }, {
-            name: 'Left',
-            data: [53, 32, 33]
-        }, {
-            name: 'Exceeded',
-            data: [12, 17, 0]
-        }],
         }
     }
+}
+
 
     render() {
+        console.log('render called') 
         return (
-        
         <Container>
             <div id="chart">
-                <Chart options={this.state.options} series={this.state.series} type="bar" height="350" />
+                <Chart options={this.state.options} series={this.props.series} type="bar" height="350" />
             </div>
         </Container>    
         );
     }
 }
 
-export default Macros;
+let mapStateToProps = (state) => {
+    console.log('mapStateToProps')
+    console.log(state.session_reducer.series)
+    return {
+      series: state.session_reducer.series
+    }
+}
+
+export default connect(mapStateToProps)(Macros);

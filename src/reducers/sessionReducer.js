@@ -1,5 +1,5 @@
 
-export default (state = { loggedIn: !!localStorage.getItem('token'), userData: {}, editUserOpen: false }, action) => {
+export default (state = { loggedIn: !!localStorage.getItem('token'), userData: {}, editUserOpen: false, series: [] }, action) => {
     switch (action.type) {
         case "USER_LOGIN": {
             return Object.assign({}, state, {
@@ -75,6 +75,11 @@ export default (state = { loggedIn: !!localStorage.getItem('token'), userData: {
                     email: newEmail,
                     description: newDescription
                 }
+            })
+        }
+        case "GET_MACRO_DATA": {
+            return Object.assign({}, state, {
+                series: action.data
             })
         }
         // case "CHECK_DAILYSNAP_EXIST": {
