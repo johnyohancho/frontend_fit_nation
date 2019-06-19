@@ -12,13 +12,16 @@ class Calories extends React.Component {
             plotOptions: {
               radialBar: {
                 hollow: {
-                  size: '50%',
+                  size: '30%',
                 }
               },
             },
-            labels: ['Calories']
+            title: {
+                text: 'Calories'
+                },
+            labels: ['Consumed', 'Exceeded']
           },
-          series: [150],
+          series: [100, 50]
         }
       }
 

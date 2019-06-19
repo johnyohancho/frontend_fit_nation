@@ -5,7 +5,7 @@ import UserProfile from './UserProfile';
 import { getUserData } from './ApiCalls';
 import jwt_decode from 'jwt-decode';
 import { connect } from 'react-redux';
-import { Segment, Card, Feed, Icon, Image, Button, Modal } from 'semantic-ui-react';
+import { Statistic, Segment, Card, Feed, Icon, Image, Button, Modal } from 'semantic-ui-react';
 import UserSetting from './UserSetting';
 
 class MainContainer extends React.Component {
@@ -121,6 +121,26 @@ class MainContainer extends React.Component {
                             >
                                     <UserSetting />
                             </Modal>
+                            <Segment inverted>
+                                    <Statistic size='small' color='blue' inverted>
+                                        <Statistic.Value>1850kcal</Statistic.Value>
+                                        <Statistic.Label>Calories</Statistic.Label>
+                                    </Statistic>
+                                <Statistic.Group size='mini'>
+                                    <Statistic color='red' inverted>
+                                        <Statistic.Value>100g</Statistic.Value>
+                                        <Statistic.Label>Protein</Statistic.Label>
+                                    </Statistic>
+                                    <Statistic color='orange' inverted>
+                                        <Statistic.Value>100g</Statistic.Value>
+                                        <Statistic.Label>Carbs</Statistic.Label>
+                                    </Statistic>
+                                    <Statistic color='yellow' inverted>
+                                        <Statistic.Value>100g</Statistic.Value>
+                                        <Statistic.Label>Fat</Statistic.Label>
+                                    </Statistic>
+                                </Statistic.Group>
+                            </Segment>
                         </div>
                     </div>
                     <div className='twelve wide column'>
