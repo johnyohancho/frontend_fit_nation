@@ -21,11 +21,11 @@ const NavBar = (props) => {
             <Link to='/fitness_gurus' className='item'>
                 <div className='content'>Fitness Gurus</div>
             </Link> */}
-            <div className='ui center aligned container'>
+            {/* <div className='ui center aligned container'>
                 <Link to='/' className='item'>
                     <img src='Fit Nation Logo.jpg' alt="oops"></img>
                 </Link>
-            </div>
+            </div> */}
             <div className="right menu">
                 <div className="item">
                     <div className="ui icon input">

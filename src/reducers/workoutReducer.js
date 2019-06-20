@@ -1,4 +1,4 @@
-export default (state = { category: 'Workout', add_mode: '', search_results: [], workouts: [], fields: ["Name", "Description", "Sets", "Reps"],
+export default (state = { category: 'Workout', add_mode: '', search_results: [], workouts: [], fields: ["Name", "Date", "Sets", "Reps"],
  
   workout_types: [
     {

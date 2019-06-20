@@ -34,7 +34,7 @@ class HistoryProgress extends React.Component {
             curve: 'smooth'
           },
           title: {
-            text: 'John\'s Progress',
+            text: '',
             align: 'left'
           },
           grid: {

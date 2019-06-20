@@ -49,10 +49,24 @@ class MealWorkout extends React.Component {
         this.props.dispatch({type: `SEARCH_${category}`})
       }
 
+    isEmpty(obj) {
+        for(var key in obj) {
+            if(obj.hasOwnProperty(key))
+                return false;
+        }
+        return true;
+    }
+
       handleClick = (e) => {
-          let createType = `CREATE_${this.props.category.toUpperCase()}`
-          this.props.dispatch({ type: createType })
+        if (!this.isEmpty(this.props.userData.user_setting)) {
+            let createType = `CREATE_${this.props.category.toUpperCase()}`
+            this.props.dispatch({ type: createType })
+        } else {
+            alert("Please set your Fitness Goals First!")
+        }
       }
+
+      
 
       deleteRecord = (e, record, category) => {
           let endpoint = ''
@@ -135,5 +149,13 @@ class MealWorkout extends React.Component {
 }
 
 
+let mapStateToProps = (state) => {
+    let userData = state.session_reducer.userData
+  
+    return {
+      userData: userData
+    }
+}
 
-export default connect()(MealWorkout);
+
+export default connect(mapStateToProps)(MealWorkout);

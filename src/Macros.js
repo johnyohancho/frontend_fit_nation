@@ -78,10 +78,8 @@ class Macros extends React.Component {
 }
 
 let mapStateToProps = (state) => {
-    console.log('mapStateToProps')
-    console.log(state.session_reducer.series)
     return {
-      series: state.session_reducer.series
+      series: state.session_reducer.macroSeries
     }
 }
 

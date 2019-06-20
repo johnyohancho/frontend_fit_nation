@@ -24,10 +24,12 @@ class App extends React.Component {
   //   .catch(error => console.error(error))
   // }
 
-  componentDidMount() {
-    const userId = jwt_decode(localStorage.getItem('token')).user_id
-    getUserData(userId).then((data) => this.props.dispatch({ type: "GET_USER_DATA", data: data }))
-  }
+  // componentDidMount() {
+  //   const userId = jwt_decode(localStorage.getItem('token')).user_id
+  //   getUserData(userId).then((data) => this.props.dispatch({ type: "GET_USER_DATA", data: data }))
+  // }
+
+  
 
   render() {
     return (

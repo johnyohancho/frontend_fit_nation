@@ -1,5 +1,5 @@
 
-export default (state = { loggedIn: !!localStorage.getItem('token'), userData: {}, editUserOpen: false, series: [] }, action) => {
+export default (state = { loggedIn: !!localStorage.getItem('token'), userData: {}, editUserOpen: false, macroSeries: [], caloriesSeries: [] }, action) => {
     switch (action.type) {
         case "USER_LOGIN": {
             return Object.assign({}, state, {
@@ -79,14 +79,30 @@ export default (state = { loggedIn: !!localStorage.getItem('token'), userData: {
         }
         case "GET_MACRO_DATA": {
             return Object.assign({}, state, {
-                series: action.data
+                macroSeries: action.data
             })
         }
-        // case "CHECK_DAILYSNAP_EXIST": {
-        //     return Object.assign({}, state, {
-        //         loggedIn: true
-        //       })
-        // }
+        case "GET_CALORIES_DATA": {
+            return Object.assign({}, state, {
+                caloriesSeries: action.data
+            })
+        }
+        case "UPDATE_USER_SETTING": {
+            let newCalories = action.data.calories
+            let newProtein = action.data.set_protein_amount
+            let newCarb = action.data.set_carb_amount
+            let newFat = action.data.set_fat_amount
+
+            return Object.assign({}, state, {
+                userData: {
+                    ...state.userData,
+                    user_setting: {
+
+
+                    }
+                }
+            })
+        }
         default: return state;
     }
 }

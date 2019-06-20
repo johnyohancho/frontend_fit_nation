@@ -11,16 +11,19 @@ class CreateFoodForm extends React.Component {
     
 
     constructor() {
+        const now = new Date()
         super()
         this.state = {
             user_id: null,
-            workout_id: 2,
+            workout_id: 1,
             name: '',
             workout_type: '',
-            date: '',
-            time: '',
+            description: '',
+            date: `${now.getFullYear()}-${now.getMonth()+1}-${now.getDate()}`,
+            time: `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`,
             sets: null,
             reps: null,
+            weight: null,
             errors: []
         }
     }
@@ -107,6 +110,13 @@ class CreateFoodForm extends React.Component {
                             options={this.props.types}
                             onChange={(e, data)=> this.setState({ workout_type: data.value })}
                         />
+                    </div>
+
+
+                    <div className='required field'>
+                        <label>Weight</label>
+                        <input className='ui focus input' type='number' name='weight' placeholder='lbs'
+                            onChange={(e)=> this.setState({ weight: e.target.value })}></input>
                     </div>
 
                     <div className='required field'>

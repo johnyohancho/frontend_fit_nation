@@ -55,22 +55,8 @@ class CreateFoodForm extends React.Component {
 
 
     handleCreateFood = (e) => {
-
         e.preventDefault()
 
-        // const now = new Date()
-        // let currentDate = `${now.getFullYear()}-${now.getMonth()+1}-${now.getDate()}`;
-        // let currentTime = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
-        // debugger
-
-        // console.log("Current Date", typeof currentDate)
-        // console.log("Current Time", typeof currentTime)
-
-
-        // this.setState({
-        //     date: currentDate,
-        //     time: currentTime
-        // })
         console.log("data being fed in",this.state)
 
         fetch('http://localhost:3000/meals',{
@@ -88,6 +74,7 @@ class CreateFoodForm extends React.Component {
                 this.props.dispatch({type: "ADD_MEAL", data: data})
             };
         })
+
 
         e.target.reset()
 

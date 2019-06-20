@@ -68,18 +68,18 @@ class EditUserForm extends React.Component {
     render() {
         return (
             <Segment>
-                <Header>Update Profile</Header>
+                <Header as='h2' textAlign='center'>Update Profile</Header>
                     <Modal.Content image>
                         <Image wrapped size='small' src='./john_cho.jpg' />
                     </Modal.Content>
-                    <Card>
+                    {/* <Card>
                         <Card.Content>
                             <Card.Header>Description</Card.Header>
                                 <Card.Description>
                                     CONSISTENCY is the key.
                                 </Card.Description>
                         </Card.Content>
-                    </Card>
+                    </Card> */}
                     <Form onSubmit={(e) => this.handleEditSubmit(e)}>
                         { this.displayErrors() }
                         <Form.Field required>

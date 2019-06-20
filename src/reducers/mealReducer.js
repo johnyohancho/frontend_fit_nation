@@ -1,4 +1,4 @@
-export default (state = { category: 'Meal', add_mode: '', search_results: [], meals: [], fields: ["Name", "Date", "Time", "Calories"],
+export default (state = { category: 'Meal', add_mode: '', search_results: [], meals: [], fields: ["Name", "Date", "Time", "Calories", "Protein", "Carbs", "Fat"],
  
   meal_types: [
     {

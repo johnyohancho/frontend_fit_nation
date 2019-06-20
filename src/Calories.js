@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container } from 'semantic-ui-react';
+import { Container, Header } from 'semantic-ui-react';
+import { connect } from 'react-redux';
 import Chart from 'react-apexcharts';
 
 class Calories extends React.Component {
@@ -27,12 +28,11 @@ class Calories extends React.Component {
 
     render() {
       return (
-        
-
         <Container>
           <div id="chart">
-            <Chart options={this.state.options} series={this.state.series} type="radialBar" height="350" />
+            <Chart options={this.state.options} series={this.props.series} type="radialBar" height="350" />
           </div>
+          {/* <Header sub>{this.props.userData.user_setting ? `${this.props.caloriesConsumed}/${this.props.userData.user_setting.set_calories}` : null}</Header> */}
         </Container>
 
 
@@ -40,4 +40,13 @@ class Calories extends React.Component {
     }
 }
 
-export default Calories;
+let mapStateToProps = (state) => {
+
+  
+  return {
+    series: state.session_reducer.caloriesSeries,
+    userData: state.session_reducer.userData
+  }
+}
+
+export default connect(mapStateToProps)(Calories);

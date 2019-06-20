@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './css/LoginForm.css'
 import SignUp from './SignUp';
+import { Statistic, Segment, Card, Feed, Icon, Image, Button, Modal } from 'semantic-ui-react';
 
 class LoginForm extends React.Component {
 
@@ -54,7 +55,9 @@ class LoginForm extends React.Component {
     render() {
         return (
             <div className='loginform-background'>
-                <div className='ui two column grid'>
+                <div className='ui five column grid'>
+                    <div className='row'></div>
+                    <div className="two wide column"></div>
                     <div className='four wide column'>
                         <div className='ui segment'>
                             { this.displayErrors() }
@@ -70,9 +73,11 @@ class LoginForm extends React.Component {
                             </form>
                         </div>
                     </div>
+                    <div className="two wide column"></div>
                     <div className='six wide column'>
                         <SignUp />
                     </div>
+                    <div className="two wide column"></div>
                 </div>
             </div>
         )
