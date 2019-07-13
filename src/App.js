@@ -37,6 +37,7 @@ class App extends React.Component {
         {/* <Sticky> */}
           <NavBar />
         {/* </Sticky> */}
+        
         <Switch>
 
           <Route exact path='/login' render={() => (

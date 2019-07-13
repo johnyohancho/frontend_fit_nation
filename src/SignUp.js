@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { Icon, Message} from 'semantic-ui-react';
 
 class SignUp extends React.Component {
     constructor() {
@@ -44,6 +46,7 @@ class SignUp extends React.Component {
                 })
             } else {
                 console.log(data)
+                this.props.dispatch({ type: "USER_CREATED" })
             };
         });
         
@@ -69,9 +72,25 @@ class SignUp extends React.Component {
                         onChange={(e)=> this.setState({ email: e.target.value})}></input>
                     <button className='ui button' type="submit" value="submit">Register</button>
                 </form>
+                { this.props.userCreated ?
+                    <Message attached='bottom' positive>
+                    <Icon name='success' />
+                    Registration Successful!&nbsp;You may now login.
+                    </Message>
+                    :
+                    null
+                }
             </div>
         )
     }
 }
 
-export default SignUp;
+let mapStateToProps = (state) => {
+    let userCreated = state.session_reducer.userCreated
+  
+    return {
+      userCreated: userCreated
+    }
+}
+
+export default connect(mapStateToProps)(SignUp);

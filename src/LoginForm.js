@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './css/LoginForm.css'
 import SignUp from './SignUp';
-import { Statistic, Segment, Card, Feed, Icon, Image, Button, Modal } from 'semantic-ui-react';
 
 class LoginForm extends React.Component {
 
@@ -45,6 +44,7 @@ class LoginForm extends React.Component {
             } else {
                 localStorage.setItem("token", data.token)
                 this.props.dispatch({ type: 'USER_LOGIN' })
+                this.props.dispatch({ type: 'USER_CREATED_MSG' })
             }
         })
         e.target.reset()
@@ -84,5 +84,6 @@ class LoginForm extends React.Component {
     }
 
 }
+
 
 export default connect()(LoginForm);

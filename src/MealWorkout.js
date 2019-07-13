@@ -49,16 +49,9 @@ class MealWorkout extends React.Component {
         this.props.dispatch({type: `SEARCH_${category}`})
       }
 
-    isEmpty(obj) {
-        for(var key in obj) {
-            if(obj.hasOwnProperty(key))
-                return false;
-        }
-        return true;
-    }
 
       handleClick = (e) => {
-        if (!this.isEmpty(this.props.userData.user_setting)) {
+        if (!!this.props.userData.set_calories && !!this.props.userData.set_protein && !!this.props.userData.set_carbs && !!this.props.userData.set_fat) {
             let createType = `CREATE_${this.props.category.toUpperCase()}`
             this.props.dispatch({ type: createType })
         } else {

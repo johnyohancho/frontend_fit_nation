@@ -1,30 +1,54 @@
 import React from 'react';
 import EditUserForm from './EditUserForm';
 import { connect } from 'react-redux';
-import { Segment, Card, Container, Feed, Icon, Image, Button, Modal } from 'semantic-ui-react'
+import { Segment, Card, Container, Feed, Icon, Image, Button, Modal } from 'semantic-ui-react';
+import jwt_decode from 'jwt-decode';
 
 class UserProfile extends React.Component {
 
   constructor() {
     super()
     this.state = {
+      user_id: null,
       open: false
-
     }
   }
 
-  closeConfigShow = (closeOnEscape, closeOnDimmerClick) => () => {
-      this.setState({ closeOnEscape, closeOnDimmerClick, open: true})
+  componentDidMount() {
+    const token = localStorage.getItem('token')
+    const decoded = jwt_decode(token)
+    
+    this.setState({
+        user_id: decoded.user_id
+    })
   }
 
-  close = () => {
-    console.log("close called!")
-    console.log(this.state.open)
+  handleOpen = () => {
+    this.setState({ open: true })
+  }
+
+  handleClose = () => {
     this.setState({ open: false })
   }
 
+  handleDelete = () => {
+    console.log("delete called")
+    return fetch(`http://localhost:3000/users/${this.state.user_id}`, {
+      method: "DELETE"
+    })
+    // .then(res => res.json())
+    //     .then(data => {
+    //         if (data.errors) {
+    //             this.setState({ errors: data.errors })
+    //         } else {
+    //           this.props.dispatch({type: "USER_LOGOUT"})
+    //         }; 
+    // })
+    .then(this.props.dispatch({type: "USER_LOGOUT"}))
+    .then(this.handleClose())
+  }
+
   render() {
-    const { open, closeOnEscape, closeOnDimmerClick } = this.state
     return (
       <Segment>
         <Container>
@@ -53,27 +77,25 @@ class UserProfile extends React.Component {
                   <EditUserForm close={() => this.close()}/>
                 </Modal>
 
-                <Button basic color='red' onClick={this.closeConfigShow(false, false)}>Delete</Button>
-
                 <Modal
-                  open={open}
-                  closeOnEscape={closeOnEscape}
-                  closeOnDimmerClick={closeOnDimmerClick}
-                  onClose={this.close}
+                  trigger={<Button basic color='red' onClick={this.handleOpen}>Delete</Button>}
+                  open={this.state.open}
+                  onClose={this.handleClose}
                 >
                   <Modal.Header>Delete Your Account</Modal.Header>
                   <Modal.Content>
                     <p>Are you sure you want to delete your account?</p>
                   </Modal.Content>
                   <Modal.Actions>
-                    <Button onClick={this.close} negative>
-                      No
+                    <Button 
+                      onClick={this.handleClose}
+                      negative
+                      content='No'
+                      >
                     </Button>
                     <Button
-                      onClick={this.close}
+                      onClick={this.handleDelete}
                       positive
-                      labelPosition='right'
-                      icon='checkmark'
                       content='Yes'
                     />
                   </Modal.Actions>

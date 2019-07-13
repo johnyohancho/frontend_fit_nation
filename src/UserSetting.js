@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import jwt_decode from 'jwt-decode';
-import { Container, Segment, Form, Button, Header, Card, Modal, Feed, Icon } from 'semantic-ui-react';
+import { Segment, Form, Button, Header, Modal } from 'semantic-ui-react';
 
 class UserSetting extends React.Component {
     constructor() {
@@ -9,9 +9,10 @@ class UserSetting extends React.Component {
         this.state = {
             user_id: null,
             set_calories: 0,
-            set_protein_amount: 0,
-            set_carb_amount: 0,
-            set_fat_amount: 0,
+            set_protein: 0,
+            set_carbs: 0,
+            set_fat: 0,
+            open: false,
             errors: []
         }
     }
@@ -23,6 +24,14 @@ class UserSetting extends React.Component {
         this.setState({
             user_id: decoded.user_id
         })
+    }
+
+    handleOpen = () => {
+        this.setState({ open: true })
+      }
+    
+    handleClose = () => {
+    this.setState({ open: false })
     }
 
     displayErrors = () => {
@@ -43,7 +52,7 @@ class UserSetting extends React.Component {
     handleSettingSubmit = (e) => {
         e.preventDefault()
     
-        fetch(`http://localhost:3000/user_settings/${this.state.user_id}`, {
+        fetch(`http://localhost:3000/users/${this.state.user_id}`, {
             method: "PATCH",
             headers: {
                 'Content-Type': 'application/json'
@@ -75,74 +84,24 @@ class UserSetting extends React.Component {
                             </Form.Field>
                             <Form.Field required>
                                 <label>Protein</label>
-                                <input type='number' placeholder='Protein (g)' name='set_protein_amount'
-                                onChange={(e) => this.setState({ set_protein_amount: e.target.value })}/>
+                                <input type='number' placeholder='Protein (g)' name='set_protein'
+                                onChange={(e) => this.setState({ set_protein: e.target.value })}/>
                             </Form.Field>
                             <Form.Field required>
                                 <label>Carbs</label>
-                                <input type='number' placeholder='Carbs' name='set_carb_amount'
-                                onChange={(e) => this.setState({ set_carb_amount: e.target.value })}/>
+                                <input type='number' placeholder='Carbs' name='set_carbs'
+                                onChange={(e) => this.setState({ set_carbs: e.target.value })}/>
                             </Form.Field>
                             <Form.Field required>
                                 <label>Fat</label>
-                                <input type='number' placeholder='Fat (g)' name='set_fat_amount'
-                                onChange={(e) => this.setState({ set_fat_amount: e.target.value })}/>
+                                <input type='number' placeholder='Fat (g)' name='set_fat'
+                                onChange={(e) => this.setState({ set_fat: e.target.value })}/>
                             </Form.Field>
                             <Modal.Actions>
                                 <Button type='submit' onClick={null}>Submit</Button>
                             </Modal.Actions>
-                    </Form>
+                        </Form>
             </Segment>
-
-            // <Segment>
-            //     <Card>
-            //         <Card.Content>
-            //             <Feed>
-            //             <Feed.Event>
-            //                 <Icon name='fire' size='small' />
-            //                 <Feed.Content>
-            //                     <Feed.Date content='Calories' />
-            //                     <Feed.Summary>
-            //                     {this.props.userData.user_setting ? 
-            //                     `${this.props.userData.user_setting.set_calories} kcal`
-            //                     :
-            //                     null
-            //                     }
-            //                     </Feed.Summary>
-            //                 </Feed.Content>
-            //             </Feed.Event>
-
-            //             <Feed.Event>
-            //                 <Icon name='fire' size='mini' />
-            //                 <Feed.Content>
-            //                 <Feed.Date content='Protein' />
-            //                 <Feed.Summary>
-            //                     {this.props.userData.user_setting ? 
-            //                     `${this.props.userData.user_setting.set_protein_amount}g`
-            //                     :
-            //                     null
-            //                     }
-            //                 </Feed.Summary>
-            //                 </Feed.Content>
-            //             </Feed.Event>
-
-            //             <Feed.Event>
-            //                 <Feed.Label image='/images/avatar/small/elliot.jpg' />
-            //                 <Feed.Content>
-            //                 <Feed.Date content='Carbs' />
-            //                 <Feed.Summary>
-            //                     {this.props.userData.user_setting ? 
-            //                     `${this.props.userData.user_setting.set_carb_amount}g`
-            //                     :
-            //                     null
-            //                     }
-            //                 </Feed.Summary>
-            //                 </Feed.Content>
-            //             </Feed.Event>
-            //             </Feed>
-            //         </Card.Content>
-            //     </Card>
-            // </Segment>
         )
     }
 }

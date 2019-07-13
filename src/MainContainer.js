@@ -5,7 +5,7 @@ import UserProfile from './UserProfile';
 import { getUserData } from './ApiCalls';
 import jwt_decode from 'jwt-decode';
 import { connect } from 'react-redux';
-import { Statistic, Segment, Card, Feed, Icon, Image, Button, Modal } from 'semantic-ui-react';
+import { Segment, Button, Modal } from 'semantic-ui-react';
 import UserSetting from './UserSetting';
 import UserStat from './UserStat';
 
@@ -33,19 +33,19 @@ class MainContainer extends React.Component {
     
 
     getMacroData(data) {
-            let pCap = data.user_setting.set_protein_amount
+            let pCap = data.set_protein
             let pTotal = 0
             let pConsume = 0
             let pRemain = 0
             let pExceed = 0
     
-            let cCap = data.user_setting.set_carb_amount
+            let cCap = data.set_carbs
             let cTotal = 0
             let cConsume = 0
             let cRemain = 0
             let cExceed = 0
     
-            let fCap = data.user_setting.set_fat_amount
+            let fCap = data.set_fat
             let fTotal = 0
             let fConsume = 0
             let fRemain = 0
@@ -99,7 +99,7 @@ class MainContainer extends React.Component {
     }
 
     getCaloriesData(data) {
-            let target = data.user_setting.set_calories
+            let target = data.set_calories
             let currentCount = 0
             let exceeded = 0
             let currentPercent = 0
@@ -109,7 +109,10 @@ class MainContainer extends React.Component {
                 currentCount += meal.calories
             })
     
-            if (currentCount >= target) {
+            if (target === null || target === 0) {
+                currentPercent = 0
+                exceedPercent = 0
+            } else if (currentCount > target) {
                 exceeded = currentCount - target
                 currentPercent = 100
                 exceedPercent = Math.round(exceeded/target * 100)
@@ -124,6 +127,7 @@ class MainContainer extends React.Component {
     }
 
     componentDidMount() {
+        console.log("main container rendered")
         const userId = jwt_decode(localStorage.getItem('token')).user_id
         getUserData(userId).then((data) => {
             this.props.dispatch({ type: "CLEAR_USER_DATA", data: null })

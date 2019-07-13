@@ -1,10 +1,22 @@
 
-export default (state = { loggedIn: !!localStorage.getItem('token'), userData: {}, editUserOpen: false, macroSeries: [], caloriesSeries: [] }, action) => {
+export default (state = { loggedIn: !!localStorage.getItem('token'), userData: {}, userCreated: false, editUserOpen: false, macroSeries: [], caloriesSeries: [] }, action) => {
     switch (action.type) {
         case "USER_LOGIN": {
             return Object.assign({}, state, {
-                loggedIn: true
+                loggedIn: true,
+                userCreated: false
               })
+        }
+        case "USER_CREATED_MSG": {
+            if (state.userCreated === false) {
+                return Object.assign({}, state, {
+                    userCreated: true
+                })    
+            } else {
+                return Object.assign({}, state, {
+                    userCreated: false
+                })
+            };
         }
         case "GET_USER_DATA": {
             console.log(action.data)
@@ -88,18 +100,19 @@ export default (state = { loggedIn: !!localStorage.getItem('token'), userData: {
             })
         }
         case "UPDATE_USER_SETTING": {
-            let newCalories = action.data.calories
-            let newProtein = action.data.set_protein_amount
-            let newCarb = action.data.set_carb_amount
-            let newFat = action.data.set_fat_amount
+            console.log("user setting data", action.data)
+            let newCalories = action.data.set_calories
+            let newProtein = action.data.set_protein
+            let newCarbs = action.data.set_carbs
+            let newFat = action.data.set_fat
 
             return Object.assign({}, state, {
                 userData: {
                     ...state.userData,
-                    user_setting: {
-
-
-                    }
+                    set_calories: newCalories,
+                    set_protein: newProtein,
+                    set_carbs: newCarbs,
+                    set_fat: newFat
                 }
             })
         }
