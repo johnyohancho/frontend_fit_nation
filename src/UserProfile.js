@@ -1,7 +1,7 @@
 import React from 'react';
 import EditUserForm from './EditUserForm';
 import { connect } from 'react-redux';
-import { Segment, Card, Container, Feed, Icon, Image, Button, Modal } from 'semantic-ui-react';
+import { Segment, Card, Container, Icon, Image, Button, Modal } from 'semantic-ui-react';
 import jwt_decode from 'jwt-decode';
 
 class UserProfile extends React.Component {
@@ -74,7 +74,7 @@ class UserProfile extends React.Component {
             <Card.Content extra>
               <div className='ui two buttons'>
                 <Modal trigger={<Button basic color='green'>Edit</Button>} >
-                  <EditUserForm close={() => this.close()}/>
+                  <EditUserForm close={() => this.handleClose()}/>
                 </Modal>
 
                 <Modal

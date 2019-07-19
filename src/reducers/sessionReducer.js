@@ -1,5 +1,5 @@
 
-export default (state = { loggedIn: !!localStorage.getItem('token'), userData: {}, userCreated: false, editUserOpen: false, macroSeries: [], caloriesSeries: [] }, action) => {
+export default (state = { loggedIn: !!localStorage.getItem('token'), userData: {}, userCreated: false, editUserOpen: false, macroSeries: [], caloriesSeries: [], currentDate: `${new Date().getFullYear()}-${new Date().getMonth()+1}-${new Date().getDate()}` }, action) => {
     switch (action.type) {
         case "USER_LOGIN": {
             return Object.assign({}, state, {
@@ -105,6 +105,7 @@ export default (state = { loggedIn: !!localStorage.getItem('token'), userData: {
             let newProtein = action.data.set_protein
             let newCarbs = action.data.set_carbs
             let newFat = action.data.set_fat
+            let newCurrentDate = `${new Date().getFullYear()}-${new Date().getMonth()+1}-${new Date().getDate()}`
 
             return Object.assign({}, state, {
                 userData: {
@@ -113,7 +114,8 @@ export default (state = { loggedIn: !!localStorage.getItem('token'), userData: {
                     set_protein: newProtein,
                     set_carbs: newCarbs,
                     set_fat: newFat
-                }
+                },
+                currentDate: newCurrentDate
             })
         }
         default: return state;

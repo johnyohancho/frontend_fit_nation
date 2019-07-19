@@ -26,14 +26,6 @@ class UserSetting extends React.Component {
         })
     }
 
-    handleOpen = () => {
-        this.setState({ open: true })
-      }
-    
-    handleClose = () => {
-    this.setState({ open: false })
-    }
-
     displayErrors = () => {
         if (this.state.errors.length > 0) {
             return (

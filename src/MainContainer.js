@@ -18,10 +18,10 @@ class MainContainer extends React.Component {
         }
     }
 
-    currentDate() {
-        const now = new Date()
-        return `${now.getFullYear()}-${now.getMonth()+1}-${now.getDate()}`;
-    }
+    // currentDate() {
+    //     const now = new Date()
+    //     return `${new Date().getFullYear()}-${new Date().getMonth()+1}-${new Date().getDate()}`;
+    // }
 
     isEmpty(obj) {
         for(var key in obj) {
@@ -161,7 +161,7 @@ class MainContainer extends React.Component {
                     </div>
                     <div className='thirteen wide column'>
                         <div className='ui segment'>
-                            <h3 className='ui header'>Daily Progress - {this.currentDate()}</h3>
+                            <h3 className='ui header'>Daily Progress - {this.props.currentDate}</h3>
                             <DailyProgress />
                         </div>
                         <div className='ui segment'>
@@ -177,7 +177,7 @@ class MainContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        macroState: state.session_reducer.macroState
+        currentDate: state.session_reducer.currentDate
     }
 }
 
