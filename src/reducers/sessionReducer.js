@@ -1,5 +1,5 @@
 
-export default (state = { loggedIn: !!localStorage.getItem('token'), userData: {}, userCreated: false, editUserOpen: false, macroSeries: [], caloriesSeries: [], currentDate: `${new Date().getFullYear()}-${new Date().getMonth()+1}-${new Date().getDate()}` }, action) => {
+export default (state = { loggedIn: !!localStorage.getItem('token'), userData: {}, userCreated: false, userSettingModal: false, editUserOpen: false, macroSeries: [], caloriesSeries: [], currentDate: `${new Date().getFullYear()}-${new Date().getMonth()+1}-${new Date().getDate()}` }, action) => {
     switch (action.type) {
         case "USER_LOGIN": {
             return Object.assign({}, state, {
@@ -19,7 +19,7 @@ export default (state = { loggedIn: !!localStorage.getItem('token'), userData: {
             };
         }
         case "GET_USER_DATA": {
-            console.log(action.data)
+            console.log("get user data",action.data)
             return Object.assign({}, state, {
                 userData: {
                     ...state.userData,
@@ -90,6 +90,7 @@ export default (state = { loggedIn: !!localStorage.getItem('token'), userData: {
             })
         }
         case "GET_MACRO_DATA": {
+            console.log("get macro data", action.data)
             return Object.assign({}, state, {
                 macroSeries: action.data
             })
@@ -116,6 +117,11 @@ export default (state = { loggedIn: !!localStorage.getItem('token'), userData: {
                     set_fat: newFat
                 },
                 currentDate: newCurrentDate
+            })
+        }
+        case "USER_SETTING_MODAL": {
+            return Object.assign({}, state, {
+                userSettingModal: !state.userSettingModal
             })
         }
         default: return state;
