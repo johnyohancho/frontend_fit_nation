@@ -5,6 +5,7 @@ import CreateWorkoutForm from './CreateWorkoutForm';
 import SearchResults from './SearchResults';
 import Records from './Records';
 import { connect } from 'react-redux';
+import { Segment } from 'semantic-ui-react';
 
 
 class MealWorkout extends React.Component {
@@ -69,7 +70,6 @@ class MealWorkout extends React.Component {
             endpoint = 'user_' + category.toLowerCase() + 's'
           };
           let deleteType = `DELETE_${category.toUpperCase()}`
-        //   console.log(`http://localhost:3000/${endpoint}/${record.id}`)
           fetch(`http://localhost:3000/${endpoint}/${record.id}`, {
               method: 'DELETE'
           })
@@ -110,31 +110,31 @@ class MealWorkout extends React.Component {
                     </div>
                 </div>
                 <div className='eight wide column'>
-                    <div className='row'>
-                        <div><button id='create-button' className='ui blue button' onClick={() => this.handleClick()}>{`Create ${this.props.category}`}</button></div>
-                    </div>
-                    <div className='row'>
-                        <div className="ui action input">
-                            <input type="text" placeholder="Search..." onChange={(e) => this.handleChange(e)}/>
-                            <button className="ui button" onClick={(e) => this.handleSearch(e)}>
-                                Search
-                            </button>
+                        <div className='row'>
+                            <div><button id='create-button' className='ui blue button' onClick={() => this.handleClick()}>{`Create ${this.props.category}`}</button></div>
                         </div>
-                        {(() => {
-                            switch (this.props.mode) {
-                            case "create_meal":
-                                return <CreateFoodForm />;
-                            case "search_meal":
-                                return <SearchResults />;
-                            case "create_workout":
-                                return <CreateWorkoutForm />;
-                            case "search_workout":
-                                return <SearchResults />;
-                            default:
-                                return null;
-                            }
-                        })()}
-                    </div>
+                        <div className='row'>
+                            <div className="ui action input">
+                                <input type="text" placeholder="Search..." onChange={(e) => this.handleChange(e)}/>
+                                <button className="ui button" onClick={(e) => this.handleSearch(e)}>
+                                    Search
+                                </button>
+                            </div>
+                            {(() => {
+                                switch (this.props.mode) {
+                                case "create_meal":
+                                    return <CreateFoodForm />;
+                                case "search_meal":
+                                    return <SearchResults />;
+                                case "create_workout":
+                                    return <CreateWorkoutForm />;
+                                case "search_workout":
+                                    return <SearchResults />;
+                                default:
+                                    return null;
+                                }
+                            })()}
+                        </div>
                 </div>
             </div>
         )
