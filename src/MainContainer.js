@@ -18,11 +18,6 @@ class MainContainer extends React.Component {
         }
     }
 
-    // currentDate() {
-    //     const now = new Date()
-    //     return `${new Date().getFullYear()}-${new Date().getMonth()+1}-${new Date().getDate()}`;
-    // }
-
     isEmpty(obj) {
         for(var key in obj) {
             if(obj.hasOwnProperty(key))
@@ -126,6 +121,10 @@ class MainContainer extends React.Component {
             return seriesData
     }
 
+    userSettingOpen = () => this.props.dispatch({ type: "USER_SETTING_MODAL" })
+
+    userSettingClose = () => this.props.dispatch({ type: "USER_SETTING_MODAL" })
+
     componentDidMount() {
         console.log("main container rendered")
         const userId = jwt_decode(localStorage.getItem('token')).user_id
@@ -148,12 +147,14 @@ class MainContainer extends React.Component {
                             <UserProfile />
                             <Segment>
                                 <Modal trigger={
-                                        <Button fluid animated='fade'>
+                                        <Button fluid animated='fade' onClick={this.userSettingOpen}>
                                         <Button.Content visible>Set Your Goals</Button.Content>
                                         <Button.Content hidden>Click!</Button.Content>
                                         </Button>}
+                                        open={this.props.userSettingModal}
+                                        onClose={this.userSettingClose}
                                 >
-                                        <UserSetting />
+                                        <UserSetting updateMainContainer={this.updateMainContainer}/>
                                 </Modal>
                                 <UserStat />
                             </Segment>
@@ -177,7 +178,8 @@ class MainContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        currentDate: state.session_reducer.currentDate
+        currentDate: state.session_reducer.currentDate,
+        userSettingModal: state.session_reducer.userSettingModal
     }
 }
 

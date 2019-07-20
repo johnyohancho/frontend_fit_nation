@@ -8,7 +8,6 @@ class Macros extends React.Component {
 
     constructor() {
         super()
-        console.log('constructor called!')
 
     this.state = {
         options: {

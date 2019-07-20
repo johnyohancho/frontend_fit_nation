@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import jwt_decode from 'jwt-decode';
 import { Segment, Form, Button, Header, Modal } from 'semantic-ui-react';
+import MainContainer from './MainContainer';
 
 class UserSetting extends React.Component {
     constructor() {
@@ -57,16 +58,16 @@ class UserSetting extends React.Component {
                 this.setState({ errors: data.errors })
             } else {
                 this.props.dispatch({ type: "UPDATE_USER_SETTING", data: data })
+                this.props.dispatch({ type: "USER_SETTING_MODAL" })
             }; 
         })
-    
         e.target.reset()
     }
 
     render() {
         return (
             <Segment>
-                <Modal.Header><Header as='h2' textAlign='center'>Goal Setting</Header></Modal.Header>
+                <Header as='h2' textAlign='center'>User Settings</Header>
                     <Form onSubmit={(e) => this.handleSettingSubmit(e)}>
                             { this.displayErrors() }
                             <Form.Field required>
@@ -89,9 +90,7 @@ class UserSetting extends React.Component {
                                 <input type='number' placeholder='Fat (g)' name='set_fat'
                                 onChange={(e) => this.setState({ set_fat: e.target.value })}/>
                             </Form.Field>
-                            <Modal.Actions>
-                                <Button type='submit' onClick={null}>Submit</Button>
-                            </Modal.Actions>
+                            <Button type='submit'>Submit</Button>
                         </Form>
             </Segment>
         )
