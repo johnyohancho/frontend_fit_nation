@@ -1,18 +1,21 @@
 import React from 'react';
 import ResultCard from './ResultCard';
 import { connect } from 'react-redux';
+import { Segment, Header } from 'semantic-ui-react';
 
 
 
 const SearchResults = (props) => {
     return (
-        <div className='ui container'>
-            {props.search_results === undefined ?
-            null
-            :
-            props.search_results.map(resultData => <ResultCard result={resultData}/>)
-            }
-        </div>
+        <Segment>
+            <div className='ui container' id='search-results'>
+                {props.search_results === undefined ?
+                <Header> Search Not Found </Header>
+                :
+                props.search_results.map(resultData => <ResultCard result={resultData}/>)
+                }
+            </div>
+        </Segment>
     )
 };
 

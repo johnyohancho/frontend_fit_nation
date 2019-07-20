@@ -113,7 +113,7 @@ class CreateFoodForm extends React.Component {
                     </div>
 
                     <div className='required field'>
-                        <label>Weight</label> 
+                        <label>Serving Weight</label> 
                         <input className='ui focus input' type='number' name='weight' placeholder='g'
                             onChange={(e)=> this.setState({ weight: e.target.value })}></input>
                     </div>
