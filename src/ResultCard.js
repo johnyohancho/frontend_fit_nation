@@ -3,12 +3,6 @@ import jwt_decode from 'jwt-decode';
 import { Card, Image, Button, Dropdown, Select, Input } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 
-const options = [
-    { key: 'all', text: 'All', value: 'all' },
-    { key: 'articles', text: 'Articles', value: 'articles' },
-    { key: 'products', text: 'Products', value: 'products' },
-]
-
 class ResultCard extends React.Component {
     
     constructor() {
