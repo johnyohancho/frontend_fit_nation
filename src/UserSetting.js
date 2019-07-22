@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import jwt_decode from 'jwt-decode';
 import { Segment, Form, Button, Header, Modal } from 'semantic-ui-react';
-import MainContainer from './MainContainer';
 import { getUserData } from './ApiCalls';
 import { getMacroData, getCaloriesData } from './MainContainer';
 
