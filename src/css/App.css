@@ -35,3 +35,7 @@
 #root > div > div.ui.secondary.menu {
     height: 100%;
 }
+
+#loginform-row {
+  margin-top: 10%;
+}

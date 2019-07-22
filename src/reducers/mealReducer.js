@@ -1,4 +1,4 @@
-export default (state = { category: 'Meal', add_mode: '', search_results: [], meals: [], fields: ["Name", "Date", "Time", "Calories", "Protein", "Carbs", "Fat"],
+export default (state = { category: 'Meal', add_mode: '', searching: false, search_results: [], meals: [], fields: ["Name", "Date", "Time", "Calories", "Protein", "Carbs", "Fat"],
  
   meal_types: [
     {
@@ -47,9 +47,14 @@ export default (state = { category: 'Meal', add_mode: '', search_results: [], me
         }
         case "SEARCH_MEAL_RESULTS": {
           return Object.assign({}, state, {
-            search_results:
-              action.data
+            search_results: action.data,
+            searching: !state.searching
           })
+        }
+        case "SEARCHING": {
+          return Object.assign({}, state, {
+            searching: true
+          })    
         }
         default: return state;
     }
