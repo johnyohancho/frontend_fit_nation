@@ -3,14 +3,18 @@ import EditUserForm from './EditUserForm';
 import { connect } from 'react-redux';
 import { Segment, Card, Container, Icon, Image, Button, Modal } from 'semantic-ui-react';
 import jwt_decode from 'jwt-decode';
+import UserAvatar from './UserAvatar';
 
 class UserProfile extends React.Component {
 
   constructor() {
     super()
+    const src = './johncho.jpg'
     this.state = {
       user_id: null,
-      open: false
+      open: false,
+      openImage: false, 
+      imageUpload: false
     }
   }
 
@@ -29,6 +33,14 @@ class UserProfile extends React.Component {
 
   handleClose = () => {
     this.setState({ open: false })
+  }
+
+  handleOpenImage = () => {
+    this.setState({ openImage: true })
+  }
+
+  handleCloseImage = () => {
+    this.setState({ openImage: false })
   }
 
   handleDelete = () => {
@@ -53,7 +65,13 @@ class UserProfile extends React.Component {
       <Segment>
         <Container>
           <Card>
-            <Image src='./john_cho.jpg' wrapped ui={false} />
+            <Modal
+              trigger={<Image src='./john_cho.jpg' wrapped ui={true} onClick={this.handleOpenImage} />}
+              open={this.state.openImage}
+              onClose={this.handleCloseImage}
+            >
+              <UserAvatar />
+            </Modal>
             <Card.Content>
               <Card.Header>{this.props.userData.name}</Card.Header>
               <Card.Meta>Joined in 2019</Card.Meta>
