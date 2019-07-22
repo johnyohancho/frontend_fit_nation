@@ -7,6 +7,7 @@ import { Segment, Form, Button, Header, Image, Modal } from 'semantic-ui-react'
 class EditUserForm extends React.Component {
     constructor() {
         super()
+        const src = './johncho.jpg'
         this.state = {
             user_id: null,
             username: '',
