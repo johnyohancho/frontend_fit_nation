@@ -43,6 +43,7 @@ class MealWorkout extends React.Component {
         e.preventDefault()
         let searchValue = this.state.searchTerm.replace(/\s/g, "%20")
         let category = this.props.category.toUpperCase()
+        this.props.dispatch({ type: "SEARCHING"})
 
         fetch(`https://api.edamam.com/api/food-database/parser?ingr=${searchValue}&app_id=a2fa636f&app_key=73b94865beb211abba81ba8d13b6a2a0%20`)
         .then(res => res.json())
