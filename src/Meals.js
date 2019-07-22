@@ -2,6 +2,8 @@ import React from 'react';
 import './css/Meals.css';
 import MealWorkout from './MealWorkout';
 import { connect } from 'react-redux';
+import { getUserData } from './ApiCalls';
+import jwt_decode from 'jwt-decode';
 
 
 
@@ -12,6 +14,16 @@ class Meals extends React.Component {
         this.state = {
             category: 'Meal'
         }
+    }
+
+    componentDidMount() {
+        console.log("meal component rendered")
+        const userId = jwt_decode(localStorage.getItem('token')).user_id
+        getUserData(userId).then((data) => {
+            this.props.dispatch({ type: "CLEAR_USER_DATA", data: null })
+            this.props.dispatch({ type: "GET_USER_DATA", data: data })
+            }
+        )
     }
     
     render() {
