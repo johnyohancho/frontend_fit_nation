@@ -33,7 +33,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App" id="app-background">
         {/* <Sticky> */}
           <NavBar />
         {/* </Sticky> */}
@@ -84,7 +84,7 @@ class App extends React.Component {
             this.props.loggedIn ? (
               <Redirect to='/main' />
             ) : (
-              <Home/>
+              <Home />
             )
           )}/>
 

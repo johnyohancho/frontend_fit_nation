@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const NavBar = (props) => {
     return (
-        <div className='ui size huge secondary menu'>
+        <div className='ui size huge secondary menu' id='nav-bar'>
             <Link to='/' className='item'>
                 <div className='content'>Home</div>
             </Link>
