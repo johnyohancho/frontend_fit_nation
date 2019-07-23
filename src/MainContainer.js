@@ -138,7 +138,7 @@ class MainContainer extends React.Component {
 
     render() {
         return (
-            <div className='ui divided two column grid'>
+            <div id='main-background' className='ui divided two column grid'>
                 <div className='stretched row'>
                     <div className='three wide column'>
                         <div className='ui segment'>
