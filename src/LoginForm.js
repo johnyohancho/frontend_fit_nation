@@ -11,7 +11,6 @@ class LoginForm extends React.Component {
         this.state = {
             username: '',
             password: '',
-            signup: false,
             errors: []
         }
     }
@@ -53,7 +52,7 @@ class LoginForm extends React.Component {
     }
 
     changeForm = () => {
-        this.setState({ signup: !this.signup})
+        this.props.dispatch({ type: "CHANGE_LOGIN_SIGNUP"})
         console.log("changeForm clicked")
     }
 
@@ -66,7 +65,7 @@ class LoginForm extends React.Component {
                     <Grid.Row id="loginform-row">
                         <Grid.Column width={2}></Grid.Column>
                         <Grid.Column width={8}>
-                            { this.state.signup ? 
+                            { this.props.signUp ? 
                             <SignUp />
                             :
                             <Segment className='transparent'>
@@ -94,5 +93,13 @@ class LoginForm extends React.Component {
 
 }
 
+let mapStateToProps = (state) => {
+    let signUp = state.session_reducer.signUp
+  
+    return {
+      signUp: signUp
+    }
+}
 
-export default connect()(LoginForm);
+
+export default connect(mapStateToProps)(LoginForm);
