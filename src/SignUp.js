@@ -54,7 +54,7 @@ class SignUp extends React.Component {
     }
 
     changeForm = () => {
-        this.setState({ signup: !this.signup})
+        this.props.dispatch({ type: "CHANGE_LOGIN_SIGNUP"})
         console.log("changeForm clicked")
     }
 
@@ -92,11 +92,10 @@ class SignUp extends React.Component {
 }
 
 let mapStateToProps = (state) => {
-    let userCreated = state.session_reducer.userCreated
     let signUp = state.session_reducer.signUp
   
     return {
-      userCreated: userCreated
+      signUp: signUp
     }
 }
 
