@@ -3,16 +3,22 @@ import './css/NavBar.css'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+
 const NavBar = (props) => {
+
+    function changeForm() {
+        props.dispatch({ type: "CHANGE_TO_LOGIN"})
+    }
+
     return (
         <div className='ui size huge secondary menu' id='nav-bar'>
             <Link to='/' className='item'>
                 <div className='content'>Home</div>
             </Link>
-            <Link to='/workouts' className='item'>
+            <Link to='/workouts' className='item' onClick={() => changeForm()}>
                 <div className='content'>Workouts</div>
             </Link>
-            <Link to='/meals' className='item'>
+            <Link to='/meals' className='item' onClick={() => changeForm()}>
                 <div className='content'>Meals</div>
             </Link>
             {/* <Link to='/bets' className='item'>
@@ -37,7 +43,7 @@ const NavBar = (props) => {
                     <div className='content'>Logout</div>
                 </Link>
                 :
-                <Link to='/login' className='item'>
+                <Link to='/login' className='item' onClick={() => changeForm()}>
                     <div className='content'>Login</div>
                 </Link> 
                 }
@@ -49,6 +55,7 @@ const NavBar = (props) => {
 
 let mapStateToProps = (state) => {
     let loginStatus = state.session_reducer.loggedIn
+
     return {
         loggedIn: loginStatus
     }

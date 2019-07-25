@@ -54,8 +54,7 @@ class SignUp extends React.Component {
     }
 
     changeForm = () => {
-        this.props.dispatch({ type: "CHANGE_LOGIN_SIGNUP"})
-        console.log("changeForm clicked")
+        this.props.dispatch({ type: "CHANGE_TO_LOGIN"})
     }
 
     render() {
@@ -75,7 +74,7 @@ class SignUp extends React.Component {
                     <Label>Email</Label>
                     <input className='ui focus input' type="text" name="email" placeholder="email"
                         onChange={(e)=> this.setState({ email: e.target.value})}></input>
-                    <Button className='ui fluid button' type='submit' value='submit'>Register</Button>
+                    <Button secondary className='ui fluid button' type='submit' value='submit'>Register</Button>
                 </Form>
                 <Button className='ui button' type='submit' value='submit' onClick={() => this.changeForm()}>Register?</Button>
                 { this.props.userCreated ?
