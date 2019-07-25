@@ -52,8 +52,7 @@ class LoginForm extends React.Component {
     }
 
     changeForm = () => {
-        this.props.dispatch({ type: "CHANGE_LOGIN_SIGNUP"})
-        console.log("changeForm clicked")
+        this.props.dispatch({ type: "CHANGE_TO_SIGNUP"})
     }
 
 
@@ -61,9 +60,9 @@ class LoginForm extends React.Component {
     render() {
         return (
             <div className='loginform-background'>
-                <Grid columns={5}>
+                <Grid columns={3}>
                     <Grid.Row id="loginform-row">
-                        <Grid.Column width={2}></Grid.Column>
+                        <Grid.Column width={4}></Grid.Column>
                         <Grid.Column width={8}>
                             { this.props.signUp ? 
                             <SignUp />
@@ -78,13 +77,13 @@ class LoginForm extends React.Component {
                                     <Input className='ui focus fluid input' icon='lock' type="password" name="password" placeholder="password"
                                         onChange={(e)=> this.setState({ password: e.target.value})}>
                                     </Input>
-                                    <Button className='ui fluid button' type='submit' value='submit'>Login</Button>
+                                    <Button secondary className='ui fluid button' type='submit' value='submit'>Login</Button>
                                 </Form>
                                 <Button className='ui button' type='submit' value='submit' onClick={() => this.changeForm()}>Register?</Button>
                             </Segment>
                             }
                         </Grid.Column>
-                        <Grid.Column width={2}></Grid.Column>
+                        <Grid.Column width={4}></Grid.Column>
                     </Grid.Row>
                 </Grid>
             </div>

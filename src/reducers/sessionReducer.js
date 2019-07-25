@@ -124,9 +124,14 @@ export default (state = { loggedIn: !!localStorage.getItem('token'), userData: {
                 userSettingModal: !state.userSettingModal
             })
         }
-        case "CHANGE_LOGIN_SIGNUP": {
+        case "CHANGE_TO_LOGIN": {
             return Object.assign({}, state, {
-                signUp: !state.signUp
+                signUp: false
+            })
+        }
+        case "CHANGE_TO_SIGNUP": {
+            return Object.assign({}, state, {
+                signUp: true
             })
         }
         default: return state;
