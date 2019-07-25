@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Icon, Message} from 'semantic-ui-react';
+import { Icon, Message, Segment, Button, Header, Form, Label, Input } from 'semantic-ui-react';
 
 class SignUp extends React.Component {
     constructor() {
@@ -53,25 +53,31 @@ class SignUp extends React.Component {
         e.target.reset()
     }
 
+    changeForm = () => {
+        this.setState({ signup: !this.signup})
+        console.log("changeForm clicked")
+    }
+
     render() {
         return (
-            <div className='ui segment'>
-                <h2>New to Fitness Guru?</h2>
-                <form id='signup-form' className="ui form" onSubmit={this.handleSubmit}>
-                    <label>Username</label>
+            <Segment className='transparent'>
+                <Header as='h2'>New to Fitness Guru?</Header>
+                <Form id='signup-form' className="ui form" onSubmit={this.handleSubmit}>
+                    <Label>UserName</Label>
                     <input className='ui focus input' type="text" name="username" placeholder="username"
                         onChange={(e)=> this.setState({ username: e.target.value})}></input>
-                    <label>Password</label>
+                    <Label>Password</Label>
                     <input className='ui focus input' type="password" name="password" placeholder="password"
                         onChange={(e)=> this.setState({ password: e.target.value})}></input>
-                    <label>Name</label>
+                    <Label>Name</Label>
                     <input className='ui focus input' type="text" name="name" placeholder="name"
                         onChange={(e)=> this.setState({ name: e.target.value})}></input>
-                    <label>Email</label>
+                    <Label>Email</Label>
                     <input className='ui focus input' type="text" name="email" placeholder="email"
                         onChange={(e)=> this.setState({ email: e.target.value})}></input>
-                    <button className='ui button' type="submit" value="submit">Register</button>
-                </form>
+                    <Button className='ui fluid button' type='submit' value='submit'>Register</Button>
+                </Form>
+                <Button className='ui button' type='submit' value='submit' onClick={() => this.changeForm()}>Register?</Button>
                 { this.props.userCreated ?
                     <Message attached='bottom' positive>
                     <Icon name='success' />
@@ -80,13 +86,14 @@ class SignUp extends React.Component {
                     :
                     null
                 }
-            </div>
+            </Segment>
         )
     }
 }
 
 let mapStateToProps = (state) => {
     let userCreated = state.session_reducer.userCreated
+    let signUp = state.session_reducer.signUp
   
     return {
       userCreated: userCreated

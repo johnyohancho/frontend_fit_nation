@@ -1,5 +1,5 @@
 
-export default (state = { loggedIn: !!localStorage.getItem('token'), userData: {}, userCreated: false, userSettingModal: false, editUserOpen: false, macroSeries: [], caloriesSeries: [], currentDate: `${new Date().getFullYear()}-${new Date().getMonth()+1}-${new Date().getDate()}` }, action) => {
+export default (state = { loggedIn: !!localStorage.getItem('token'), userData: {}, signUp: false, userCreated: false, userSettingModal: false, editUserOpen: false, macroSeries: [], caloriesSeries: [], currentDate: `${new Date().getFullYear()}-${new Date().getMonth()+1}-${new Date().getDate()}` }, action) => {
     switch (action.type) {
         case "USER_LOGIN": {
             return Object.assign({}, state, {
