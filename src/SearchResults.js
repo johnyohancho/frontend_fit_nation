@@ -10,7 +10,7 @@ const SearchResults = (props) => {
         return (
             <div>
                 <Dimmer active inverted>
-                    <Loader>Loading</Loader>
+                    <Loader>Searching</Loader>
                 </Dimmer>
             </div>
         )
