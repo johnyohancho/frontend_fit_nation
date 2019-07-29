@@ -60,23 +60,19 @@ class SignUp extends React.Component {
     render() {
         return (
             <Segment className='transparent'>
-                <Header as='h2'>New to Fitness Guru?</Header>
+                <Header as='h2' id='signup-header'>New to Fitness Guru?</Header>
                 <Form id='signup-form' className="ui form" onSubmit={this.handleSubmit}>
-                    <Label>UserName</Label>
-                    <input className='ui focus input' type="text" name="username" placeholder="username"
-                        onChange={(e)=> this.setState({ username: e.target.value})}></input>
-                    <Label>Password</Label>
-                    <input className='ui focus input' type="password" name="password" placeholder="password"
-                        onChange={(e)=> this.setState({ password: e.target.value})}></input>
-                    <Label>Name</Label>
-                    <input className='ui focus input' type="text" name="name" placeholder="name"
-                        onChange={(e)=> this.setState({ name: e.target.value})}></input>
-                    <Label>Email</Label>
-                    <input className='ui focus input' type="text" name="email" placeholder="email"
-                        onChange={(e)=> this.setState({ email: e.target.value})}></input>
+                    <Input className='ui focus fluid input' icon='user' type="text" name="username" placeholder="username"
+                        onChange={(e)=> this.setState({ username: e.target.value})}></Input>
+                    <Input className='ui focus fluid input' icon='lock' type="password" name="password" placeholder="password"
+                        onChange={(e)=> this.setState({ password: e.target.value})}></Input>
+                    <Input className='ui focus fluid input' type="text" name="name" placeholder="name"
+                        onChange={(e)=> this.setState({ name: e.target.value})}></Input>
+                    <Input className='ui focus fluid input' icon='mail' type="text" name="email" placeholder="email"
+                        onChange={(e)=> this.setState({ email: e.target.value})}></Input>
                     <Button secondary className='ui fluid button' type='submit' value='submit'>Register</Button>
                 </Form>
-                <Button className='ui button' type='submit' value='submit' onClick={() => this.changeForm()}>Register?</Button>
+                <Button className='ui button' type='submit' value='submit' onClick={() => this.changeForm()}>LOGIN</Button>
                 { this.props.userCreated ?
                     <Message attached='bottom' positive>
                     <Icon name='success' />

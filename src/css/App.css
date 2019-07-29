@@ -36,9 +36,6 @@
     height: 100%;
 }
 
-#loginform-row {
-  margin-top: 10%;
-}
 
 /* #app-background {
   background-color: #030D14;
@@ -47,10 +44,3 @@
 #nav-bar {
   background-color: white;
 } */
-
-#fitness_guru_logo {
-  margin-top: 12%;
-  margin-left: 28%;
-  width: 45%;
-  height: 45%;
-}

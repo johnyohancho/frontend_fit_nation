@@ -62,14 +62,14 @@ class LoginForm extends React.Component {
             <div className='loginform-background'>
                 <Grid columns={3}>
                     <Grid.Row id="loginform-row">
-                        <Grid.Column width={4}></Grid.Column>
-                        <Grid.Column width={8}>
+                        <Grid.Column width={5}></Grid.Column>
+                        <Grid.Column width={6}>
                             { this.props.signUp ? 
                             <SignUp />
                             :
                             <Segment className='transparent'>
                                 { this.displayErrors() }
-                                <Header as='h2' >Login</Header>
+                                <Header as='h2' id='login-header' >Login</Header>
                                 <Form id='login-form' className="ui form" onSubmit={this.handleSubmit}>
                                     <Input className='ui focus fluid input' icon='user' type="text" name="username" placeholder="username"
                                         onChange={(e)=> this.setState({ username: e.target.value})}>
@@ -79,11 +79,11 @@ class LoginForm extends React.Component {
                                     </Input>
                                     <Button secondary className='ui fluid button' type='submit' value='submit'>Login</Button>
                                 </Form>
-                                <Button className='ui button' type='submit' value='submit' onClick={() => this.changeForm()}>Register?</Button>
+                                <Button className='ui button' type='submit' value='submit' onClick={() => this.changeForm()}>SIGN UP</Button>
                             </Segment>
                             }
                         </Grid.Column>
-                        <Grid.Column width={4}></Grid.Column>
+                        <Grid.Column width={5}></Grid.Column>
                     </Grid.Row>
                 </Grid>
             </div>
