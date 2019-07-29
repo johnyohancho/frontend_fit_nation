@@ -12,3 +12,14 @@
     opacity: 0.9;
 }
 
+#loginform-row {
+    margin-top: 12%;
+  }
+
+#login-header {
+    text-align: center;
+}
+
+#signup-header {
+    text-align: center;
+}
