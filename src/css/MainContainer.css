@@ -1,4 +1,4 @@
-#root > div > div.main-background {
+/* #root > div > div.main-background {
     background-image: url(../home_background.jpg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -6,4 +6,9 @@
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-}
+} */
+
+/* #main-background {
+    display: flex;
+    flex-wrap: nowrap | wrap | wrap-reverse;
+} */

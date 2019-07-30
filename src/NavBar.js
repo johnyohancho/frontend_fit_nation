@@ -12,26 +12,28 @@ const NavBar = (props) => {
 
     return (
         <div className='ui size huge secondary menu' id='nav-bar'>
-            <Link to='/' className='item'>
-                <div className='content'>Home</div>
-            </Link>
-            <Link to='/workouts' className='item' onClick={() => changeForm()}>
-                <div className='content'>Workouts</div>
-            </Link>
-            <Link to='/meals' className='item' onClick={() => changeForm()}>
-                <div className='content'>Meals</div>
-            </Link>
-            {/* <Link to='/bets' className='item'>
-                <div className='content'>Bets</div>
-            </Link>
-            <Link to='/fitness_gurus' className='item'>
-                <div className='content'>Fitness Gurus</div>
-            </Link> */}
-            {/* <div className='ui center aligned container'>
-                <Link to='/' className='item'>
-                    <img src='Fit Nation Logo.jpg' alt="oops"></img>
+            <ul>
+                <Link to='/' className='item' id='active'>
+                    <div className='content'>Home</div>
                 </Link>
-            </div> */}
+                <Link to='/workouts' className='item' id='active' onClick={() => changeForm()}>
+                    <div className='content'>Workouts</div>
+                </Link>
+                <Link to='/meals' className='item' id='active' onClick={() => changeForm()}>
+                    <div className='content'>Meals</div>
+                </Link>
+                {/* <Link to='/bets' className='item'>
+                    <div className='content'>Bets</div>
+                </Link>
+                <Link to='/fitness_gurus' className='item'>
+                    <div className='content'>Fitness Gurus</div>
+                </Link> */}
+                {/* <div className='ui center aligned container'>
+                    <Link to='/' className='item'>
+                        <img src='Fit Nation Logo.jpg' alt="oops"></img>
+                    </Link>
+                </div> */}
+            </ul>
             <div className="right menu">
                 <div className="item">
                     <div className="ui icon input">
@@ -39,11 +41,11 @@ const NavBar = (props) => {
                     </div>
                 </div>
                 {props.loggedIn ?
-                <Link to='/' className='item' onClick={() => props.dispatch({ type: 'USER_LOGOUT' })}>
+                <Link to='/' className='item' id='active' onClick={() => props.dispatch({ type: 'USER_LOGOUT' })}>
                     <div className='content'>Logout</div>
                 </Link>
                 :
-                <Link to='/login' className='item' onClick={() => changeForm()}>
+                <Link to='/login' className='item' id='active' onClick={() => changeForm()}>
                     <div className='content'>Login</div>
                 </Link> 
                 }

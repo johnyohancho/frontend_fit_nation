@@ -32,9 +32,9 @@
   }
 } */
 
-#root > div > div.ui.secondary.menu {
+/* #root > div > div.ui.secondary.menu {
     height: 100%;
-}
+} */
 
 
 /* #app-background {
@@ -44,3 +44,13 @@
 #nav-bar {
   background-color: white;
 } */
+
+#app-background {
+  background-image: url(../home_background.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: scroll;
+}
