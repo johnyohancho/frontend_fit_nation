@@ -1,4 +1,4 @@
-#root > div > div.loginform-background {
+/* #root > div > div.loginform-background {
     background-image: url(../home_background.jpg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -6,7 +6,7 @@
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-}
+} */
 
 .transparent {
     opacity: 0.9;
