@@ -7,8 +7,6 @@ import LoginForm from './LoginForm'
 import MainContainer from './MainContainer'
 import Workouts from './Workouts';
 import Meals from './Meals';
-import FitnessGurus from './FitnessGurus';
-import Bets from './Bets';
 import { connect } from 'react-redux';
 import { Sticky } from 'semantic-ui-react';
 import { getUserData } from './ApiCalls';
@@ -16,20 +14,6 @@ import jwt_decode from 'jwt-decode';
 
 
 class App extends React.Component {
-
-  // componentDidMount() {
-  //   fetch('https://wger.de/api/v2/exercise/?status=2')
-  //   .then(res => res.json())
-  //   .then(data => console.log(data))
-  //   .catch(error => console.error(error))
-  // }
-
-  // componentDidMount() {
-  //   const userId = jwt_decode(localStorage.getItem('token')).user_id
-  //   getUserData(userId).then((data) => this.props.dispatch({ type: "GET_USER_DATA", data: data }))
-  // }
-
-  
 
   render() {
     return (
@@ -63,23 +47,6 @@ class App extends React.Component {
               <Redirect to='/login' />
             )
           )}/>
-
-          <Route exact path='/bets' render={() => (
-            this.props.loggedIn ? (
-              <Bets />
-            ) : (
-              <Redirect to='/login' />
-            )
-          )}/>
-
-          <Route exact path='/fitness_gurus' render={() => (
-            this.props.loggedIn ? (
-              <FitnessGurus />
-            ) : (
-              <Redirect to='/login' />
-            )
-          )}/>
-
           <Route exact path='/' render={() => (
             this.props.loggedIn ? (
               <Redirect to='/main' />
