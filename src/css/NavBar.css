@@ -5,6 +5,7 @@
 
 #nav-bar ul {
     display: inline-flex;
+    color: #b2b1b1;
 }
 
 #active {
