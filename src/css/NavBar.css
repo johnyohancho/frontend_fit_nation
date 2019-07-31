@@ -3,6 +3,10 @@
     
 }
 
+#nav-bar {
+    margin-top: 10px;
+}
+
 #nav-bar ul {
     display: inline-flex;
     color: #b2b1b1;
@@ -12,4 +16,9 @@
     color: #b2b1b1;
     cursor: pointer;
     margin: 0 20px;
+}
+
+#menu-logo {
+    width: 100px;
+    height: 50px;
 }
