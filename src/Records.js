@@ -1,5 +1,5 @@
 import React from 'react';
-// import { Icon } from 'semantic-ui-react';
+
 
 const Records = (props) => {
     if (props.record === null) {
