@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import jwt_decode from 'jwt-decode';
 import { Segment, Form, Button, Header, Modal } from 'semantic-ui-react';
 import { getUserData } from './ApiCalls';
-import { getMacroData, getCaloriesData } from './MainContainer';
+import { calcMacroData, calcCaloriesData } from './Calculations';
 
 class UserSetting extends React.Component {
     constructor() {
@@ -61,8 +61,8 @@ class UserSetting extends React.Component {
                 this.props.dispatch({ type: "UPDATE_USER_SETTING", data: data })
                 getUserData(this.state.user_id).then((data) => {
                     this.props.dispatch({ type: "GET_USER_DATA", data: data })
-                    this.props.dispatch({ type: "GET_MACRO_DATA", data: getMacroData(data) })
-                    this.props.dispatch({ type: "GET_CALORIES_DATA", data: getCaloriesData(data) })
+                    this.props.dispatch({ type: "GET_MACRO_DATA", data: calcMacroData(data) })
+                    this.props.dispatch({ type: "GET_CALORIES_DATA", data: calcCaloriesData(data) })
                     }
                 )
                 this.props.dispatch({ type: "USER_SETTING_MODAL" })
