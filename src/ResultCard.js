@@ -13,7 +13,7 @@ class ResultCard extends React.Component {
             name: '',
             date: `${now.getFullYear()}-${now.getMonth()+1}-${now.getDate()}`,
             time: `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`,
-            meal_type: '',
+            meal_type: 'Breakfast',
             calories: '',
             weight: '',
             protein: '',
@@ -121,14 +121,6 @@ class ResultCard extends React.Component {
                     <Button.Content visible>Click to Add</Button.Content>
                     <Button.Content hidden>Click!</Button.Content>
                 </Button>
-
-                {/* <Dropdown
-                            placeholder='Choose a Meal Type'
-                            fluid
-                            selection
-                            options={this.props.types}
-                            onChange={(e, data)=> this.setState({ meal_type: data.value })}
-                /> */}
                 </Card.Content>
 
                 :
