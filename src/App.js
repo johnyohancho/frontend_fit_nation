@@ -8,9 +8,6 @@ import MainContainer from './MainContainer'
 import Workouts from './Workouts';
 import Meals from './Meals';
 import { connect } from 'react-redux';
-import { Sticky } from 'semantic-ui-react';
-import { getUserData } from './ApiCalls';
-import jwt_decode from 'jwt-decode';
 
 
 class App extends React.Component {

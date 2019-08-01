@@ -17,7 +17,6 @@ class Meals extends React.Component {
     }
 
     componentDidMount() {
-        console.log("meal component rendered")
         const userId = jwt_decode(localStorage.getItem('token')).user_id
         getUserData(userId).then((data) => {
             this.props.dispatch({ type: "CLEAR_USER_DATA", data: null })
