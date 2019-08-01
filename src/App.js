@@ -18,46 +18,23 @@ class App extends React.Component {
   render() {
     return (
       <div className="App" id="app-background">
-        {/* <Sticky> */}
-          <NavBar />
-        {/* </Sticky> */}
+        <NavBar />
         
         <Switch>
 
           <Route exact path='/login' render={() => (
             this.props.loggedIn ? (
-              <Redirect to='/main' />
+              <Redirect to='/dashboard' />
             ) : (
               <LoginForm />
             )
           )}/>
 
-          <Route exact path='/workouts' render={() => (
-            this.props.loggedIn ? (
-              <Workouts />
-            ) : (
-              <Redirect to='/login' />
-            )
-          )}/>
-
-          <Route exact path='/meals' render={() => (
-            this.props.loggedIn ? (
-              <Meals />
-            ) : (
-              <Redirect to='/login' />
-            )
-          )}/>
-          <Route exact path='/' render={() => (
-            this.props.loggedIn ? (
-              <Redirect to='/main' />
-            ) : (
-              <Home />
-            )
-          )}/>
-
+          <Route exact path='/workouts' component={Workouts}/>
+          <Route exact path='/meals' component={Meals}/>
           <Route exact path='/login' component={LoginForm}/>
           <Route exact path='/' component={Home}/>
-          <Route exact path='/main' component={MainContainer}/>
+          <Route exact path='/dashboard' component={MainContainer}/>
         </Switch>
       </div>
     );
