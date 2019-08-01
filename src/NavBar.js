@@ -14,8 +14,14 @@ const NavBar = (props) => {
         return (
             <div className='ui size huge secondary menu' id='nav-bar'>
             <ul>
-                <Link to='/' className='item' id='active'>
-                    <div className='content'>Home</div>
+                <Link to='/dashboard' className='item' id='active'>
+                    <div className='content'>Dashboard</div>
+                </Link>
+                <Link to='/daily' className='item' id='active' onClick={() => changeForm()}>
+                    <div className='content'>Daily</div>
+                </Link>
+                <Link to='/history' className='item' id='active' onClick={() => changeForm()}>
+                    <div className='content'>History</div>
                 </Link>
                 <Link to='/workouts' className='item' id='active' onClick={() => changeForm()}>
                     <div className='content'>Workouts</div>
