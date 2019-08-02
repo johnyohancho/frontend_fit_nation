@@ -65,7 +65,6 @@ class Macros extends React.Component {
 
 
     render() {
-        console.log('render called') 
         return (
         <Container>
             <div id="chart">

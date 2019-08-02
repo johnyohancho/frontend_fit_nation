@@ -9,14 +9,13 @@ import jwt_decode from 'jwt-decode';
 class CreateFoodForm extends React.Component {
     
     
-
     constructor() {
         const now = new Date()
         super()
         this.state = {
             user_id: null,
             name: '',
-            date: `${now.getFullYear()}-${now.getMonth()+1}-${now.getDate()}`,
+            date: `${new Date().getFullYear()}-${new Date().getMonth()+1}-${new Date().getDate()}`,
             time: `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`,
             meal_type: '',
             calories: '',
