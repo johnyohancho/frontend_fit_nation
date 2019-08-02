@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import jwt_decode from 'jwt-decode';
 import { Segment, Form, Button, Header, Modal } from 'semantic-ui-react';
-import { getUserData } from './ApiCalls';
+import { getUserData, patchUserSetting } from './ApiCalls';
 import { calcMacroData, calcCaloriesData } from './Calculations';
 
 class UserSetting extends React.Component {
@@ -46,15 +46,7 @@ class UserSetting extends React.Component {
     handleSettingSubmit = (e) => {
         e.preventDefault()
     
-        fetch(`http://localhost:3000/users/${this.state.user_id}`, {
-            method: "PATCH",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(this.state)
-        })
-        .then(res => res.json())
-        .then(data => {
+        patchUserSetting(this.state.user_id,this.state).then(data => {
             if (data.errors) {
                 this.setState({ errors: data.errors })
             } else {

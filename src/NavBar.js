@@ -17,16 +17,16 @@ const NavBar = (props) => {
                 <Link to='/dashboard' className='item' id='active'>
                     <div className='content'>Dashboard</div>
                 </Link>
-                <Link to='/daily' className='item' id='active' onClick={() => changeForm()}>
+                <Link to='/daily' className='item' id='active'>
                     <div className='content'>Daily</div>
                 </Link>
-                <Link to='/history' className='item' id='active' onClick={() => changeForm()}>
+                <Link to='/history' className='item' id='active'>
                     <div className='content'>History</div>
                 </Link>
-                <Link to='/workouts' className='item' id='active' onClick={() => changeForm()}>
+                <Link to='/workouts' className='item' id='active'>
                     <div className='content'>Workouts</div>
                 </Link>
-                <Link to='/meals' className='item' id='active' onClick={() => changeForm()}>
+                <Link to='/meals' className='item' id='active'>
                     <div className='content'>Meals</div>
                 </Link>
             </ul>

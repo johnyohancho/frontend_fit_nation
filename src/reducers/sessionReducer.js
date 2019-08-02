@@ -19,7 +19,6 @@ export default (state = { loggedIn: !!localStorage.getItem('token'), userData: {
             };
         }
         case "GET_USER_DATA": {
-            console.log("get user data",action.data)
             return Object.assign({}, state, {
                 userData: {
                     ...state.userData,
@@ -101,7 +100,6 @@ export default (state = { loggedIn: !!localStorage.getItem('token'), userData: {
             })
         }
         case "UPDATE_USER_SETTING": {
-            console.log("user setting data", action.data)
             let newCalories = action.data.set_calories
             let newProtein = action.data.set_protein
             let newCarbs = action.data.set_carbs

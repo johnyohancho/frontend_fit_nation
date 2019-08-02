@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './css/LoginForm.css'
 import SignUp from './SignUp';
+import { createToken } from './ApiCalls';
 import { Grid, Segment, Button, Header, Form, Label, Input, Image } from 'semantic-ui-react';
 
 class LoginForm extends React.Component {
@@ -32,13 +33,7 @@ class LoginForm extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        fetch('http://localhost:3000/login', {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(this.state)
-        }).then(res => res.json())
+        createToken(this.state)
         .then(data => {
             if (data.errors) {
                 this.setState({ errors: data.errors })

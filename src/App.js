@@ -7,6 +7,8 @@ import LoginForm from './LoginForm'
 import MainContainer from './MainContainer'
 import Workouts from './Workouts';
 import Meals from './Meals';
+import DailyContainer from './DailyContainer';
+import HistoryContainer from './HistoryContainer';
 import { connect } from 'react-redux';
 
 
@@ -26,12 +28,12 @@ class App extends React.Component {
               <LoginForm />
             )
           )}/>
-
+          <Route exact path='/dashboard' component={MainContainer}/>
+          <Route exact path='/daily' component={DailyContainer}/>
+          <Route exact path='/history' component={HistoryContainer}/>
           <Route exact path='/workouts' component={Workouts}/>
           <Route exact path='/meals' component={Meals}/>
-          <Route exact path='/login' component={LoginForm}/>
           <Route exact path='/' component={Home}/>
-          <Route exact path='/dashboard' component={MainContainer}/>
         </Switch>
       </div>
     );
