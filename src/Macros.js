@@ -26,7 +26,7 @@ class Macros extends React.Component {
             },
     
             title: {
-            text: 'Today\'s Macros'
+            text: 'Macros'
             },
             xaxis: {
             categories: ["protein", "carbs", "fats"],
