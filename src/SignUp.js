@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { createUser } from './ApiCalls';
 import { Icon, Message, Segment, Button, Header, Form, Label, Input } from 'semantic-ui-react';
 
 class SignUp extends React.Component {
@@ -31,14 +32,7 @@ class SignUp extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        fetch('http://localhost:3000/users', {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(this.state)
-        })
-        .then(res => res.json())
+        createUser(this.state)
         .then(data => {
             if (data.errors) {
                 this.setState({
@@ -47,6 +41,7 @@ class SignUp extends React.Component {
             } else {
                 console.log(data)
                 this.props.dispatch({ type: "USER_CREATED" })
+                this.changeForm()
             };
         });
         

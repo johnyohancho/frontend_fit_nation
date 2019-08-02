@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { Segment, Card, Container, Icon, Image, Button, Modal } from 'semantic-ui-react';
 import jwt_decode from 'jwt-decode';
 import UserAvatar from './UserAvatar';
+import { deleteUser } from './ApiCalls';
+import { Link } from 'react-router-dom';
 
 class UserProfile extends React.Component {
 
@@ -44,18 +46,7 @@ class UserProfile extends React.Component {
   }
 
   handleDelete = () => {
-    console.log("delete called")
-    return fetch(`http://localhost:3000/users/${this.state.user_id}`, {
-      method: "DELETE"
-    })
-    // .then(res => res.json())
-    //     .then(data => {
-    //         if (data.errors) {
-    //             this.setState({ errors: data.errors })
-    //         } else {
-    //           this.props.dispatch({type: "USER_LOGOUT"})
-    //         }; 
-    // })
+    deleteUser(this.state.user_id)
     .then(this.props.dispatch({type: "USER_LOGOUT"}))
     .then(this.handleClose())
   }
@@ -111,11 +102,13 @@ class UserProfile extends React.Component {
                       content='No'
                       >
                     </Button>
-                    <Button
-                      onClick={this.handleDelete}
-                      positive
-                      content='Yes'
-                    />
+                    <Link to='/'>
+                      <Button
+                        onClick={this.handleDelete}
+                        positive
+                        content='Yes'
+                      />
+                    </Link>
                   </Modal.Actions>
                 </Modal>
               </div>
