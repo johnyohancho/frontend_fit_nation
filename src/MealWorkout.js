@@ -79,7 +79,7 @@ class MealWorkout extends React.Component {
     
     render() {
         return (
-            <div id='mealworkout-page' className='ui grid'>
+            <div id='mealworkout' className='ui grid'>
                 <div className='eight wide column'>
                     <div id='records-container' className='ui container'>
                         {this.props.dropdown_menu.map(item =>
@@ -111,6 +111,7 @@ class MealWorkout extends React.Component {
                     </div>
                 </div>
                 <div className='eight wide column'>
+                    <Segment>
                         <div className='row'>
                             <div><button id='create-button' className='ui blue button' onClick={() => this.handleClick()}>{`Create ${this.props.category}`}</button></div>
                         </div>
@@ -136,6 +137,8 @@ class MealWorkout extends React.Component {
                                 }
                             })()}
                         </div>
+
+                    </Segment>
                 </div>
             </div>
         )

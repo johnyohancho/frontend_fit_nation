@@ -1,12 +1,15 @@
 import React from 'react';
 import DailyProgress from './DailyProgress';
-import { Segment } from 'semantic-ui-react';
+import { Segment, Grid } from 'semantic-ui-react';
+import './css/DailyContainer.css';
 
 const DailyContainer = () => {
     return (
-        <Segment>
-            <DailyProgress />
-        </Segment>
+        <Grid id='dailycontainer'>
+            <Segment>
+                <DailyProgress />
+            </Segment>
+        </Grid>
     )
 }
 

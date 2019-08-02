@@ -91,3 +91,9 @@ export function calcCaloriesData(data) {
 
     return seriesData
 }
+
+export function formatDate(string) {
+    let year = string.slice(0,4)
+    let monthDay = string.slice(4)
+    return year + monthDay.replace(/0/g,'')
+}
