@@ -48,11 +48,9 @@ class MainContainer extends React.Component {
                 <div className='stretched row'>
                     <div className='three wide column'>
                         <div className='ui segment'>
-                            <h3 className='ui header'>Profile</h3>
-                            <UserProfile />
                             <Segment>
                                 <Modal trigger={
-                                        <Button fluid animated='fade' onClick={this.userSettingOpen}>
+                                    <Button secondary fluid animated='fade' onClick={this.userSettingOpen}>
                                         <Button.Content visible>Set Your Goals</Button.Content>
                                         <Button.Content hidden>Click!</Button.Content>
                                         </Button>}
@@ -61,18 +59,16 @@ class MainContainer extends React.Component {
                                 >
                                         <UserSetting updateMainContainer={this.updateMainContainer}/>
                                 </Modal>
-                                <UserStat />
                             </Segment>
+                            <UserProfile />
                         </div>
                     </div>
                     <div className='thirteen wide column'>
+                        <UserStat />
                         <div className='ui segment'>
-                            <h3 className='ui header'>Daily Progress - {this.props.currentDate}</h3>
                             <DailyProgress />
                         </div>
                         <div className='ui segment'>
-                            <h3 className='ui header'>History Progress (Coming soon...)</h3>
-                                <HistoryProgress />
                         </div>
                     </div>
                 </div>
