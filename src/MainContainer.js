@@ -37,9 +37,7 @@ class MainContainer extends React.Component {
         const userId = jwt_decode(localStorage.getItem('token')).user_id
         getUserData(userId).then((data) => {
             let dateNow = new Date(this.props.currentDate)
-            console.log("User Data",data.meals.filter(meal => new Date(formatDate(meal.date)) >= dateNow ))
             data.meals = data.meals.filter(meal => new Date(formatDate(meal.date)) >= dateNow )
-            console.log("Meals Changed?",data)
             this.props.dispatch({ type: "CLEAR_USER_DATA", data: null })
             this.props.dispatch({ type: "GET_USER_DATA", data: data })
             this.props.dispatch({ type: "GET_MACRO_DATA", data: calcMacroData(data) })
