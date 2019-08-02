@@ -4,6 +4,7 @@ import MealWorkout from './MealWorkout';
 import { connect } from 'react-redux';
 import { getUserData } from './ApiCalls';
 import jwt_decode from 'jwt-decode';
+import { formatDate } from './Calculations';
 
 
 
@@ -42,15 +43,20 @@ class Meals extends React.Component {
 let mapStateToProps = (state) => {
     let mealAddMode = state.meal_reducer.add_mode
     let mealSearchResults = state.meal_reducer.search_results
+
     let mealsList = []
-    if (state.session_reducer.userData) {
-        mealsList = state.session_reducer.userData.meals
+    if (state.session_reducer.userData.meals !== undefined ) {
+        let dateNow = new Date(state.session_reducer.currentDate)
+        let todayMeals = state.session_reducer.userData.meals.filter(meal => new Date(formatDate(meal.date)) >= dateNow )
+        mealsList = todayMeals
     };
+    
     let mealTypes = state.meal_reducer.meal_types
     let mealFields = state.meal_reducer.fields
     let mealCategory = state.meal_reducer.category
 
     return {
+        currentDate: state.session_reducer.currentDate,
         add_mode: mealAddMode,
         search_results: mealSearchResults,
         meals: mealsList,
