@@ -5,8 +5,6 @@ import { Statistic, Segment, Grid, Icon } from 'semantic-ui-react';
 
 const UserStat = (props) => {
     return (
-        <Segment>
-
         <Grid columns={3} divided>
             <Grid.Row>
               <Grid.Column width={5}>
@@ -41,7 +39,6 @@ const UserStat = (props) => {
               </Grid.Column>
             </Grid.Row>
         </Grid>
-        </Segment>
     )
 
 }

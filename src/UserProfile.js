@@ -53,7 +53,7 @@ class UserProfile extends React.Component {
 
   render() {
     return (
-      <Segment>
+      <Segment raised>
         <Container>
           <Card>
             <Modal

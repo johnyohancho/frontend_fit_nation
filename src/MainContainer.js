@@ -52,7 +52,7 @@ class MainContainer extends React.Component {
                 <div className='stretched row'>
                     <div className='three wide column'>
                         <div className='ui segment'>
-                            <Segment>
+                            <Segment raised>
                                 <Modal trigger={
                                     <Button secondary fluid animated='fade' onClick={this.userSettingOpen}>
                                         <Button.Content visible>Set Your Goals</Button.Content>
@@ -68,12 +68,14 @@ class MainContainer extends React.Component {
                         </div>
                     </div>
                     <div className='thirteen wide column'>
-                        <UserStat />
-                        <div className='ui segment'>
-                            <DailyProgress />
-                        </div>
-                        <div className='ui segment'>
-                        </div>
+                        <Segment>
+                            <Segment raised>
+                                <UserStat />
+                            </Segment>
+                            <Segment raised>
+                                <DailyProgress />
+                            </Segment>
+                        </Segment>
                     </div>
                 </div>
             </div>
