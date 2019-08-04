@@ -4,7 +4,8 @@ import { Segment } from 'semantic-ui-react';
 
 const HistoryContainer = () => {
     return (
-        <Segment>
+        <Segment >
+            <HistoryProgress />
             <HistoryProgress />
         </Segment>
     )
