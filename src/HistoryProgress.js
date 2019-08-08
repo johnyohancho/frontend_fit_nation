@@ -1,5 +1,6 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
+import { Segment, Grid } from 'semantic-ui-react';
 
 class HistoryProgress extends React.Component {
     
@@ -93,11 +94,8 @@ class HistoryProgress extends React.Component {
     render() {
 
       return (
-        
-        <div className='ui segment'>
-          <div id="chart">
-            <Chart options={this.state.options} series={this.state.series} type="line" height="350" />
-          </div>
+        <div id="history-chart">
+          <Chart options={this.state.options} series={this.state.series} type="line" height="350" />
         </div>
       );
     }

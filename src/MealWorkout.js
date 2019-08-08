@@ -5,7 +5,7 @@ import CreateWorkoutForm from './CreateWorkoutForm';
 import SearchResults from './SearchResults';
 import Records from './Records';
 import { connect } from 'react-redux';
-import { Segment } from 'semantic-ui-react';
+import { Grid, Segment } from 'semantic-ui-react';
 
 
 class MealWorkout extends React.Component {
@@ -79,7 +79,7 @@ class MealWorkout extends React.Component {
     
     render() {
         return (
-            <div id='mealworkout' className='ui grid'>
+            <Grid id='mealworkout' className='ui grid'>
                 <div className='eight wide column'>
                     <div id='records-container' className='ui container'>
                         {this.props.dropdown_menu.map(item =>
@@ -137,10 +137,9 @@ class MealWorkout extends React.Component {
                                 }
                             })()}
                         </div>
-
                     </Segment>
                 </div>
-            </div>
+            </Grid>
         )
     }
 }
