@@ -18,11 +18,16 @@ class Calories extends React.Component {
               },
             },
             title: {
-                text: 'Calories'
+                text: 'Calories',
+                align: 'left',
+                margin: 0,
+                style: {
+                  fontSize:  '22px',
+                  color:  'black'
+                }
                 },
             labels: ['Consumed', 'Exceeded']
-          },
-          series: [100, 50]
+          }
         }
       }
 
@@ -42,10 +47,10 @@ class Calories extends React.Component {
 
 let mapStateToProps = (state) => {
 
-  
   return {
     series: state.session_reducer.caloriesSeries,
-    userData: state.session_reducer.userData
+    userData: state.session_reducer.userData,
+
   }
 }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import DailyProgress from './DailyProgress';
-import { Segment, Grid, Container } from 'semantic-ui-react';
+import { Segment, Grid, Header } from 'semantic-ui-react';
 import { getUserData } from './ApiCalls';
 import jwt_decode from 'jwt-decode';
 import './css/DailyContainer.css';
@@ -27,9 +27,10 @@ class DailyContainer extends React.Component {
         return (
             <Grid id='dailycontainer'>
                 <Segment>
-                    <Segment raised>
-                        <DailyProgress />
-                    </Segment>
+                    <Header>Daily Snapshot</Header>
+                        <Segment raised>
+                            <DailyProgress />
+                        </Segment>
                 </Segment>
             </Grid>
         )

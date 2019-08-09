@@ -31,11 +31,6 @@ const NavBar = (props) => {
                 </Link>
             </ul>
             <div className="right menu">
-                <div className="item">
-                    <div className="ui icon input">
-                        <input type="text" placeholder="Coming Soon..." /><i aria-hidden="true" className="search icon"></i>
-                    </div>
-                </div>
                 <Link to='/' className='item' id='active' onClick={() => props.dispatch({ type: 'USER_LOGOUT' })}>
                     <div className='content'>Logout</div>
                 </Link>
@@ -46,11 +41,6 @@ const NavBar = (props) => {
         return (
             <div className='ui size huge secondary menu' id='nav-bar'>
                 <div className="right menu">
-                    <div className="item">
-                        <div className="ui icon input">
-                            <input type="text" placeholder="Coming Soon..." /><i aria-hidden="true" className="search icon"></i>
-                        </div>
-                    </div>
                     <Link to='/login' className='item' id='active' onClick={() => changeForm()}>
                         <div className='content'>Login</div>
                     </Link>
