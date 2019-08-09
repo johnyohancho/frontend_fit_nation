@@ -97,3 +97,14 @@ export function formatDate(string) {
     let monthDay = string.slice(4)
     return year + monthDay.replace(/0/g,'')
 }
+
+export function formatTime(string) {
+    let time = string.slice(11,19)
+    let hour = parseInt(time.slice(0,2))
+    let newHour
+    if (hour > 12) {
+        newHour = (hour - 12).toString()
+        return newHour + time.slice(2) + ' PM'
+    };
+    return time + ' AM'
+}

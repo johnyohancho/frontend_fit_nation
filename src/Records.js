@@ -1,4 +1,5 @@
 import React from 'react';
+import { formatTime } from './Calculations';
 
 
 const Records = (props) => {
@@ -20,7 +21,7 @@ const Records = (props) => {
             <tr className="">
                 <th className="">{props.record.name}</th>
                 <th className="">{props.record.date}</th>
-                <th className="">{props.record.time}</th>
+                <th className="">{formatTime(props.record.time)}</th>
                 <th className="">{props.record.calories}</th>
                 <th className="">{props.record.protein}</th>
                 <th className="">{props.record.carbs}</th>
@@ -31,7 +32,6 @@ const Records = (props) => {
             </tr>
         )
     } else {
-        console.log(props.record)
         return (
             <tr className="">
                 <th className="">{props.record.name}</th>

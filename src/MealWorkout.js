@@ -1,5 +1,5 @@
 import React from 'react';
-// import './Meals.css';
+import './css/MealWorkout.css';
 import CreateFoodForm from './CreateFoodForm';
 import CreateWorkoutForm from './CreateWorkoutForm';
 import SearchResults from './SearchResults';
@@ -79,67 +79,69 @@ class MealWorkout extends React.Component {
     
     render() {
         return (
-            <Grid id='mealworkout' className='ui grid'>
-                <div className='eight wide column'>
-                    <div id='records-container' className='ui container'>
-                        {this.props.dropdown_menu.map(item =>
-                            <div className='ui segment'>
-                                <h2 className='ui header'>{item.key}</h2>
-                                    <table className="ui striped table">
-                                            <thead className="">
-                                                <tr className="">
-                                                    {this.props.fields.map(field => 
-                                                        <th className="">{field}</th>    
-                                                    )}
-                                                    <th className=""><i aria-hidden="true" className="trash alternate outline link icon" onClick={null}></i></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody className="">
-                                                {this.props.records && this.props.records.length > 0 ? 
-                                                    this.props.records.filter(record =>
-                                                        record.meal_type === item.key || record.workout_type === item.key)
-                                                        .map(record => 
-                                                        <Records record={record} category={this.props.category} fields={this.props.fields} deleteRecord={this.deleteRecord}/>
-                                                        )
-                                                    :
-                                                    <Records record={null} category={this.props.category} fields={this.props.fields} deleteRecord={this.deleteRecord}/>
-                                                    }
-                                            </tbody>
-                                    </table>
-                            </div>
-                        )}
+            <Segment id='mealworkout'>
+                <Grid>
+                    <div className='eight wide column'>
+                        <div id='records-container' className='ui container'>
+                            {this.props.dropdown_menu.map(item =>
+                                <Segment raised>
+                                    <h2 className='ui header'>{item.key}</h2>
+                                        <table className="ui striped table">
+                                                <thead className="">
+                                                    <tr className="">
+                                                        {this.props.fields.map(field => 
+                                                            <th className="">{field}</th>    
+                                                        )}
+                                                        <th className=""><i aria-hidden="true" className="trash alternate outline link icon" onClick={null}></i></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody className="">
+                                                    {this.props.records && this.props.records.length > 0 ? 
+                                                        this.props.records.filter(record =>
+                                                            record.meal_type === item.key || record.workout_type === item.key)
+                                                            .map(record => 
+                                                            <Records record={record} category={this.props.category} fields={this.props.fields} deleteRecord={this.deleteRecord}/>
+                                                            )
+                                                        :
+                                                        <Records record={null} category={this.props.category} fields={this.props.fields} deleteRecord={this.deleteRecord}/>
+                                                        }
+                                                </tbody>
+                                        </table>
+                                </Segment>
+                            )}
+                        </div>
                     </div>
-                </div>
-                <div className='eight wide column'>
-                    <Segment>
-                        <div className='row'>
-                            <div><button id='create-button' className='ui blue button' onClick={() => this.handleClick()}>{`Create ${this.props.category}`}</button></div>
-                        </div>
-                        <div className='row'>
-                            <div className="ui action input">
-                                <input type="text" placeholder="Search..." onChange={(e) => this.handleChange(e)}/>
-                                <button className="ui button" onClick={(e) => this.handleSearch(e)}>
-                                    Search
-                                </button>
+                    <div className='eight wide column'>
+                        <Segment raised>
+                            <div className='row'>
+                                <div><button id='create-button' className='ui blue button' onClick={() => this.handleClick()}>{`Create ${this.props.category}`}</button></div>
                             </div>
-                            {(() => {
-                                switch (this.props.mode) {
-                                case "create_meal":
-                                    return <CreateFoodForm />;
-                                case "search_meal":
-                                    return <SearchResults />;
-                                case "create_workout":
-                                    return <CreateWorkoutForm />;
-                                case "search_workout":
-                                    return <SearchResults />;
-                                default:
-                                    return null;
-                                }
-                            })()}
-                        </div>
-                    </Segment>
-                </div>
-            </Grid>
+                            <div className='row'>
+                                <div className="ui action input">
+                                    <input type="text" placeholder="Search..." onChange={(e) => this.handleChange(e)}/>
+                                    <button className="ui button" onClick={(e) => this.handleSearch(e)}>
+                                        Search
+                                    </button>
+                                </div>
+                                {(() => {
+                                    switch (this.props.mode) {
+                                    case "create_meal":
+                                        return <CreateFoodForm />;
+                                    case "search_meal":
+                                        return <SearchResults />;
+                                    case "create_workout":
+                                        return <CreateWorkoutForm />;
+                                    case "search_workout":
+                                        return <SearchResults />;
+                                    default:
+                                        return null;
+                                    }
+                                })()}
+                            </div>
+                        </Segment>
+                    </div>
+                </Grid>
+            </Segment>
         )
     }
 }
