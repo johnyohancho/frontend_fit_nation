@@ -1,13 +1,15 @@
 import React from 'react';
 import HistoryProgress from './HistoryProgress';
-import { Segment } from 'semantic-ui-react';
+import './css/HistoryContainer.css';
+import { Segment, Grid } from 'semantic-ui-react';
 
 const HistoryContainer = () => {
     return (
-        <Segment >
-            <HistoryProgress />
-            <HistoryProgress />
-        </Segment>
+        <Grid id='historycontainer'>
+            <Segment id='history-chart'>
+                <HistoryProgress />
+            </Segment>
+        </Grid>
     )
 }
 

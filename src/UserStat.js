@@ -18,20 +18,20 @@ const UserStat = (props) => {
                 </Statistic>
               </Grid.Column>
               <Grid.Column width={11}>
-                  <Statistic.Group widths='four'>
-                    <Statistic horizontal color='blue'>
+                  <Statistic.Group id='nutrition-stat' widths='four'>
+                    <Statistic color='blue'>
                         <Statistic.Value>{props.userData.set_calories ? props.userData.set_calories : '-'}</Statistic.Value>
                         <Statistic.Label>Calories</Statistic.Label>
                     </Statistic>
-                    <Statistic horizontal color='red'>
+                    <Statistic color='red'>
                         <Statistic.Value>{props.userData.set_protein ? props.userData.set_protein : '-'}</Statistic.Value>
                         <Statistic.Label>Protein</Statistic.Label>
                     </Statistic>
-                    <Statistic horizontal color='orange'>
+                    <Statistic color='orange'>
                         <Statistic.Value>{props.userData.set_carbs ? props.userData.set_carbs : '-'}</Statistic.Value>
                         <Statistic.Label>Carbs</Statistic.Label>
                     </Statistic>
-                    <Statistic horizontal color='yellow'>
+                    <Statistic color='yellow'>
                         <Statistic.Value>{props.userData.set_fat ? props.userData.set_fat : '-'}</Statistic.Value>
                         <Statistic.Label>Fat</Statistic.Label>
                     </Statistic>

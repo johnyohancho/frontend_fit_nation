@@ -35,6 +35,7 @@ const Records = (props) => {
         return (
             <tr className="">
                 <th className="">{props.record.name}</th>
+                <th className="">{props.record.date}</th>
                 <th className="">{props.record.weight} lbs</th>
                 <th className="">{props.record.sets}</th>
                 <th className="">{props.record.reps}</th>
