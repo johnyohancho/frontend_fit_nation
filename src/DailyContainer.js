@@ -27,7 +27,9 @@ class DailyContainer extends React.Component {
         return (
             <Grid id='dailycontainer'>
                 <Segment>
-                    <DailyProgress />
+                    <Segment raised>
+                        <DailyProgress />
+                    </Segment>
                 </Segment>
             </Grid>
         )

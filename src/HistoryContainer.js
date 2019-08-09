@@ -7,7 +7,9 @@ const HistoryContainer = () => {
     return (
         <Grid id='historycontainer'>
             <Segment id='history-chart'>
-                <HistoryProgress />
+                <Segment raised>
+                    <HistoryProgress />
+                </Segment>
             </Segment>
         </Grid>
     )
