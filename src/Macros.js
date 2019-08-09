@@ -26,7 +26,13 @@ class Macros extends React.Component {
             },
     
             title: {
-            text: 'Macros'
+            text: 'Macros',
+            align: 'left',
+                margin: 0,
+                style: {
+                  fontSize:  '22px',
+                  color:  'black'
+                }
             },
             xaxis: {
             categories: ["protein", "carbs", "fats"],
