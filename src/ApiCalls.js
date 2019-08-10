@@ -1,5 +1,5 @@
-const userURL = 'http://localhost:3000/users/'
-const loginURL = 'http://localhost:3000/login'
+const userURL = 'https://backend-fitness-guru.herokuapp.com/users/'
+const loginURL = 'https://backend-fitness-guru.herokuapp.com/login'
 
 export function createToken(state) {
     return fetch(loginURL, {
@@ -12,7 +12,7 @@ export function createToken(state) {
 }
 
 export function createUser(state) {
-    return fetch('http://localhost:3000/users', {
+    return fetch('https://backend-fitness-guru.herokuapp.com/users', {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'

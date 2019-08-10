@@ -19,6 +19,7 @@ export default (state = { loggedIn: !!localStorage.getItem('token'), userData: {
             };
         }
         case "GET_USER_DATA": {
+            console.log("getting user data", data)
             return Object.assign({}, state, {
                 userData: {
                     ...state.userData,

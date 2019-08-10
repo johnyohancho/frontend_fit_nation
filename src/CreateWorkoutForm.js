@@ -67,7 +67,7 @@ class CreateFoodForm extends React.Component {
             time: currentTime
         })
 
-        fetch('http://localhost:3000/user_workouts',{
+        fetch('https://backend-fitness-guru.herokuapp.com/user_workouts',{
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'

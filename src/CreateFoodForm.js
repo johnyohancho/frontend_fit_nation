@@ -56,9 +56,7 @@ class CreateFoodForm extends React.Component {
     handleCreateFood = (e) => {
         e.preventDefault()
 
-        console.log("data being fed in",this.state)
-
-        fetch('http://localhost:3000/meals',{
+        fetch('https://backend-fitness-guru.herokuapp.com/meals',{
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'

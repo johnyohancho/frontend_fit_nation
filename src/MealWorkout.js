@@ -71,7 +71,7 @@ class MealWorkout extends React.Component {
             endpoint = 'user_' + category.toLowerCase() + 's'
           };
           let deleteType = `DELETE_${category.toUpperCase()}`
-          fetch(`http://localhost:3000/${endpoint}/${record.id}`, {
+          fetch(`https://backend-fitness-guru.herokuapp.com/${endpoint}/${record.id}`, {
               method: 'DELETE'
           })
           .then(() => this.props.dispatch({ type: deleteType, data: record }))

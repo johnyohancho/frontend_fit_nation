@@ -46,7 +46,7 @@ class EditUserForm extends React.Component {
     handleEditSubmit = (e) => {
         e.preventDefault()
     
-        fetch(`http://localhost:3000/users/${this.state.user_id}`, {
+        fetch(`https://backend-fitness-guru.herokuapp.com//users/${this.state.user_id}`, {
             method: "PATCH",
             headers: {
                 'Content-Type': 'application/json'
