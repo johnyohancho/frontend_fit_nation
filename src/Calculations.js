@@ -94,8 +94,16 @@ export function calcCaloriesData(data) {
 
 export function formatDate(string) {
     let year = string.slice(0,4)
-    let monthDay = string.slice(4)
-    return year + monthDay.replace(/0/g,'')
+    let month = string.slice(5,7)
+    let day = string.slice(8,10)
+    if (parseInt(month) < 10) {
+        month = month.replace(/0/g,'')
+    };
+    if (parseInt(day) < 10) {
+        day = day.replace(/0/g,'')
+    };
+
+    return year + '-' + month + '-' + day
 }
 
 export function formatTime(string) {
