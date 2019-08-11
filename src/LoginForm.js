@@ -59,6 +59,9 @@ class LoginForm extends React.Component {
                     <Grid.Row id="loginform-row">
                         <Grid.Column width={5}></Grid.Column>
                         <Grid.Column width={6}>
+                            <div className="home-background">
+                                <Image className='transparent' id='fitness_guru_logo_login' src='./fitness_guru_logo.png'/>
+                            </div>
                             { this.props.signUp ? 
                             <SignUp />
                             :
