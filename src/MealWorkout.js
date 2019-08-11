@@ -6,6 +6,7 @@ import SearchResults from './SearchResults';
 import Records from './Records';
 import { connect } from 'react-redux';
 import { Grid, Segment } from 'semantic-ui-react';
+import { fetchFood, deleteRecord } from './ApiCalls';
 
 
 class MealWorkout extends React.Component {
@@ -45,8 +46,7 @@ class MealWorkout extends React.Component {
         let category = this.props.category.toUpperCase()
         this.props.dispatch({ type: "SEARCHING"})
 
-        fetch(`https://api.edamam.com/api/food-database/parser?ingr=${searchValue}&app_id=a2fa636f&app_key=73b94865beb211abba81ba8d13b6a2a0%20`)
-        .then(res => res.json())
+        fetchFood(searchValue)
         .then(data => this.props.dispatch({type: `SEARCH_${category}_RESULTS`, data: data.hints}))
         this.props.dispatch({type: `SEARCH_${category}`})
       }
@@ -71,9 +71,7 @@ class MealWorkout extends React.Component {
             endpoint = 'user_' + category.toLowerCase() + 's'
           };
           let deleteType = `DELETE_${category.toUpperCase()}`
-          fetch(`https://backend-fitness-guru.herokuapp.com/${endpoint}/${record.id}`, {
-              method: 'DELETE'
-          })
+          deleteRecord(endpoint,record.id)
           .then(() => this.props.dispatch({ type: deleteType, data: record }))
       }
     

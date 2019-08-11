@@ -3,6 +3,7 @@ import jwt_decode from 'jwt-decode';
 import { connect } from 'react-redux';
 
 import { Segment, Form, Button, Header, Image, Modal } from 'semantic-ui-react'
+import { patchUserProfile } from './ApiCalls';
 
 class EditUserForm extends React.Component {
     constructor() {
@@ -46,14 +47,7 @@ class EditUserForm extends React.Component {
     handleEditSubmit = (e) => {
         e.preventDefault()
     
-        fetch(`https://backend-fitness-guru.herokuapp.com//users/${this.state.user_id}`, {
-            method: "PATCH",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(this.state)
-        })
-        .then(res => res.json())
+        patchUserProfile(this.state.user_id,this.state)
         .then(data => {
             if (data.errors) {
                 this.setState({ errors: data.errors })

@@ -2,6 +2,7 @@ import React from 'react';
 import jwt_decode from 'jwt-decode';
 import { Card, Image, Button, Dropdown, Select, Input } from 'semantic-ui-react';
 import { connect } from 'react-redux';
+import { createMeal } from './ApiCalls';
 
 class ResultCard extends React.Component {
     
@@ -34,28 +35,18 @@ class ResultCard extends React.Component {
     }
 
     cardFlip = (data) => {
-        console.log("card flip!")
         this.setState({ backSide: !this.state.backSide })
         this.setState({ name: data.label})
         this.setState({ calories: data.nutrients.ENERC_KCAL})
         this.setState({ carbs: Math.round(data.nutrients.CHOCDF) })
         this.setState({ protein: Math.round(data.nutrients.PROCNT) })
         this.setState({ fat: Math.round(data.nutrients.FAT)} )
-
-        console.log("data being fed in",this.state)
     }
 
     clickAdd = (e) => {
         e.preventDefault()
 
-        fetch('https://backend-fitness-guru.herokuapp.com/meals',{
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(this.state)
-        })
-        .then(res => res.json())
+        createMeal(this.state)
         .then(data => {
             if (data.errors) {
                 this.setState({ errors: data.errors })

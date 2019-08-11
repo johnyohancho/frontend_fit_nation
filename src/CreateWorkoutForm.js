@@ -3,6 +3,7 @@ import 'semantic-ui-css/semantic.min.css'
 import { Dropdown } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import jwt_decode from 'jwt-decode';
+import { createUserWorkout } from './ApiCalls';
 
 
 
@@ -67,14 +68,7 @@ class CreateFoodForm extends React.Component {
             time: currentTime
         })
 
-        fetch('https://backend-fitness-guru.herokuapp.com/user_workouts',{
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(this.state)
-        })
-        .then(res => res.json())
+        createUserWorkout(this.state)
         .then(data => {
             if (data.errors) {
                 this.setState({ errors: data.errors })

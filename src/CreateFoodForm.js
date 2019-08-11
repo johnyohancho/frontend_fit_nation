@@ -3,6 +3,7 @@ import 'semantic-ui-css/semantic.min.css'
 import { Dropdown } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import jwt_decode from 'jwt-decode';
+import { createMeal } from './ApiCalls';
 
 
 
@@ -56,14 +57,7 @@ class CreateFoodForm extends React.Component {
     handleCreateFood = (e) => {
         e.preventDefault()
 
-        fetch('https://backend-fitness-guru.herokuapp.com/meals',{
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(this.state)
-        })
-        .then(res => res.json())
+        createMeal(this.state)
         .then(data => {
             if (data.errors) {
                 this.setState({ errors: data.errors })
