@@ -18,6 +18,7 @@ export function calcMacroData(data) {
     let fExceed = 0
 
     data.meals.map(meal => {
+        console.log(meal)
         let p = meal.protein
         let c = meal.carbs
         let f = meal.fat

@@ -36,6 +36,7 @@ class MainContainer extends React.Component {
     componentDidMount() {
         const userId = jwt_decode(localStorage.getItem('token')).user_id
         getUserData(userId).then((data) => {
+            console.log("main container raw data", data)
             let dateNow = new Date(this.props.currentDate)
             data.meals = data.meals.filter(meal => new Date(formatDate(meal.date)) >= dateNow )
             this.props.dispatch({ type: "CLEAR_USER_DATA", data: null })

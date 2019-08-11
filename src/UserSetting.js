@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import jwt_decode from 'jwt-decode';
 import { Segment, Form, Button, Header, Modal } from 'semantic-ui-react';
 import { getUserData, patchUserSetting } from './ApiCalls';
-import { calcMacroData, calcCaloriesData } from './Calculations';
+import { calcMacroData, calcCaloriesData, formatDate } from './Calculations';
 
 class UserSetting extends React.Component {
     constructor() {
@@ -51,14 +51,19 @@ class UserSetting extends React.Component {
                 this.setState({ errors: data.errors })
             } else {
                 this.props.dispatch({ type: "UPDATE_USER_SETTING", data: data })
-                getUserData(this.state.user_id).then((data) => {
-                    this.props.dispatch({ type: "GET_USER_DATA", data: data })
-                    this.props.dispatch({ type: "GET_MACRO_DATA", data: calcMacroData(data) })
-                    this.props.dispatch({ type: "GET_CALORIES_DATA", data: calcCaloriesData(data) })
-                    }
-                )
-                this.props.dispatch({ type: "USER_SETTING_MODAL" })
             }; 
+        })
+        .then(() => {
+            getUserData(this.state.user_id).then(data => {
+                let dateNow = new Date(this.props.currentDate)
+                data.meals = data.meals.filter(meal => new Date(formatDate(meal.date)) >= dateNow )
+                this.props.dispatch({ type: "CLEAR_USER_DATA", data: null })
+                this.props.dispatch({ type: "GET_USER_DATA", data: data })
+                this.props.dispatch({ type: "GET_MACRO_DATA", data: calcMacroData(data) })
+                this.props.dispatch({ type: "GET_CALORIES_DATA", data: calcCaloriesData(data) })
+                }
+            )
+            this.props.dispatch({ type: "USER_SETTING_MODAL" })
         })
         e.target.reset()
     }
@@ -100,8 +105,9 @@ let mapStateToProps = (state) => {
     let userData = state.session_reducer.userData
   
     return {
-      userData: userData
+        currentDate: state.session_reducer.currentDate,
+        userData: userData
     }
   }
 
-export default connect()(UserSetting);
+export default connect(mapStateToProps)(UserSetting);

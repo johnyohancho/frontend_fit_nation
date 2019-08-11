@@ -1,4 +1,4 @@
-const backendAPI = 'https://localhost:3000'
+const backendAPI = 'http://localhost:3000'
 // const backendAPI = 'https://backend-fitness-guru.herokuapp.com'
 
 export function createToken(state) {
@@ -46,7 +46,7 @@ export function createUserWorkout(state) {
 
 export function getUserData(userId) {
     return fetch(backendAPI+'/users/'+userId)
-    .then(res => res.json())   
+    .then(res => res.json())
 }
 
 export function patchUserProfile(userId, state) {
