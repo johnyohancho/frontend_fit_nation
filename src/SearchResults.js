@@ -2,7 +2,7 @@ import React from 'react';
 import ResultCard from './ResultCard';
 import { connect } from 'react-redux';
 import { Segment, Header, Dimmer, Loader } from 'semantic-ui-react';
-
+import './css/SearchResults.css';
 
 
 const SearchResults = (props) => {
