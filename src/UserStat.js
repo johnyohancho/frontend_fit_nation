@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Statistic, Segment, Grid, Icon } from 'semantic-ui-react';
+import './css/UserStat.css';
 
 
 const UserStat = (props) => {
@@ -8,10 +9,10 @@ const UserStat = (props) => {
         <Grid columns={3} divided>
             <Grid.Row>
               <Grid.Column width={5}>
-                <Statistic horizonal>
+                <Statistic id='today' horizonal size='small'>
                     <Statistic.Value>
-                        <Icon name='calendar alternate' />
-                        &nbsp;
+                        <Icon id='calendar' name='calendar alternate' />
+                        &nbsp;&nbsp;
                         {props.currentDate}
                     </Statistic.Value>
                     {/* <Statistic.Value>{props.currentDate}</Statistic.Value> */}

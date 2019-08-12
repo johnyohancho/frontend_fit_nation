@@ -1,3 +1,5 @@
+
+
 export function calcMacroData(data) {
     let pCap = data.set_protein
     let pTotal = 0
@@ -92,6 +94,21 @@ export function calcCaloriesData(data) {
 
     return seriesData
 }
+
+export function generateHistorySeries(data) {
+    let series = {}
+    data.meals.map(meal => 
+        (formatDate(meal.date) in series) ? 
+        (series[formatDate(meal.date)].calories += meal.calories,
+        series[formatDate(meal.date)].protein += meal.protein,
+        series[formatDate(meal.date)].carbs += meal.carbs,
+        series[formatDate(meal.date)].fat += meal.fat
+        )
+        : 
+        series[formatDate(meal.date)] = {calories: meal.calories, protein: meal.protein, carbs: meal.carbs, fat: meal.fat},
+    )
+    return series;
+  }
 
 export function formatDate(string) {
     let year = string.slice(0,4)

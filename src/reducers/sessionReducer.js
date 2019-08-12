@@ -1,5 +1,5 @@
 
-export default (state = { loggedIn: !!localStorage.getItem('token'), userData: {}, signUp: false, userCreated: false, userSettingModal: false, editUserOpen: false, macroSeries: [], caloriesSeries: [], currentDate: `${new Date().getFullYear()}-${new Date().getMonth()+1}-${new Date().getDate()}` }, action) => {
+export default (state = { loggedIn: !!localStorage.getItem('token'), userData: {}, signUp: false, userCreated: false, userSettingModal: false, editUserOpen: false, macroSeries: [], caloriesSeries: [], historySeries: [], currentDate: `${new Date().getFullYear()}-${new Date().getMonth()+1}-${new Date().getDate()}` }, action) => {
     switch (action.type) {
         case "USER_LOGIN": {
             return Object.assign({}, state, {
@@ -98,6 +98,12 @@ export default (state = { loggedIn: !!localStorage.getItem('token'), userData: {
         case "GET_CALORIES_DATA": {
             return Object.assign({}, state, {
                 caloriesSeries: action.data
+            })
+        }
+        case "GET_HISTORY_DATA": {
+            console.log("HISTORY SERIES DATA",action.data)
+            return Object.assign({}, state, {
+                historySeries: action.data
             })
         }
         case "UPDATE_USER_SETTING": {
