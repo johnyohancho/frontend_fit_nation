@@ -1,0 +1,118 @@
+[debug] [2019-08-19T20:53:43.962Z] ----------------------------------------------------------------------
+[debug] [2019-08-19T20:53:43.967Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2019-08-19T20:53:43.967Z] CLI Version:   7.2.2
+[debug] [2019-08-19T20:53:43.968Z] Platform:      darwin
+[debug] [2019-08-19T20:53:43.968Z] Node Version:  v10.15.3
+[debug] [2019-08-19T20:53:43.982Z] Time:          Mon Aug 19 2019 16:53:43 GMT-0400 (Eastern Daylight Time)
+[debug] [2019-08-19T20:53:43.982Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-08-19T20:53:44.017Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-08-19T20:53:44.017Z] > authorizing via signed-in user
+[debug] [2019-08-19T20:53:44.018Z] [iam] checking project frontend-fitness-guru for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2019-08-19T20:53:44.020Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-08-19T20:53:44.020Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-08-19T20:53:44.435Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-19T20:53:44.458Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/frontend-fitness-guru:testIamPermissions  
+
+[debug] [2019-08-19T20:53:44.972Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-19T20:53:44.976Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/frontend-fitness-guru  
+ 
+[debug] [2019-08-19T20:53:45.482Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'frontend-fitness-guru'...
+[info] 
+[info] i  deploying hosting
+[debug] [2019-08-19T20:53:45.490Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/frontend-fitness-guru/versions  
+
+[debug] [2019-08-19T20:53:46.721Z] <<< HTTP RESPONSE 200
+[info] i  hosting[frontend-fitness-guru]: beginning deploy...
+[info] i  hosting[frontend-fitness-guru]: found 37 files in build
+[debug] [2019-08-19T20:53:46.743Z] [hosting] hash cache [YnVpbGQ] load error: lines is not defined
+[debug] [2019-08-19T20:53:48.189Z] [hosting] hash cache [YnVpbGQ] stored for 37 files
+[debug] [2019-08-19T20:53:48.189Z] [hosting][hash queue][FINAL]
+[debug] [2019-08-19T20:53:48.190Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/frontend-fitness-guru/versions/8fb01af02e7fc149:populateFiles  
+ <request body omitted>
+[debug] [2019-08-19T20:53:49.418Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-19T20:53:49.427Z] [hosting][populate queue][FINAL]
+[debug] [2019-08-19T20:53:49.427Z] [hosting] uploads queued: 6
+[debug] [2019-08-19T20:53:51.997Z] [hosting][upload queue][FINAL]
+[info] ✔  hosting[frontend-fitness-guru]: file upload complete
+[debug] [2019-08-19T20:53:51.998Z] [hosting] deploy completed after 5274ms
+[debug] [2019-08-19T20:53:52.000Z] [
+  {
+    "config": {
+      "public": "build",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ],
+      "site": "frontend-fitness-guru"
+    },
+    "site": "frontend-fitness-guru",
+    "version": "sites/frontend-fitness-guru/versions/8fb01af02e7fc149"
+  }
+]
+[info] i  hosting[frontend-fitness-guru]: finalizing version...
+[debug] [2019-08-19T20:53:52.000Z] >>> HTTP REQUEST PATCH https://firebasehosting.googleapis.com/v1beta1/sites/frontend-fitness-guru/versions/8fb01af02e7fc149?updateMask=status  
+
+[debug] [2019-08-19T20:53:52.274Z] <<< HTTP RESPONSE 500
+[debug] [2019-08-19T20:53:52.275Z] <<< HTTP RESPONSE BODY
+[error] 
+[error] Error: HTTP Error: 500, Internal error encountered.
+[debug] [2019-08-19T20:53:52.284Z] Error Context: {
+  "body": {
+    "error": {
+      "code": 500,
+      "message": "Internal error encountered.",
+      "status": "INTERNAL"
+    }
+  },
+  "response": {
+    "statusCode": 500,
+    "body": {
+      "error": {
+        "code": 500,
+        "message": "Internal error encountered.",
+        "status": "INTERNAL"
+      }
+    },
+    "headers": {
+      "vary": "X-Origin, Referer, Origin,Accept-Encoding",
+      "content-type": "application/json; charset=UTF-8",
+      "date": "Mon, 19 Aug 2019 20:53:52 GMT",
+      "server": "ESF",
+      "cache-control": "private",
+      "x-xss-protection": "0",
+      "x-frame-options": "SAMEORIGIN",
+      "x-content-type-options": "nosniff",
+      "alt-svc": "quic=\":443\"; ma=2592000; v=\"46,43,39\"",
+      "accept-ranges": "none",
+      "transfer-encoding": "chunked"
+    },
+    "request": {
+      "uri": {
+        "protocol": "https:",
+        "slashes": true,
+        "auth": null,
+        "host": "firebasehosting.googleapis.com",
+        "port": 443,
+        "hostname": "firebasehosting.googleapis.com",
+        "hash": null,
+        "search": "?updateMask=status",
+        "query": "updateMask=status",
+        "pathname": "/v1beta1/sites/frontend-fitness-guru/versions/8fb01af02e7fc149",
+        "path": "/v1beta1/sites/frontend-fitness-guru/versions/8fb01af02e7fc149?updateMask=status",
+        "href": "https://firebasehosting.googleapis.com/v1beta1/sites/frontend-fitness-guru/versions/8fb01af02e7fc149?updateMask=status"
+      },
+      "method": "PATCH"
+    }
+  }
+}

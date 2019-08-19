@@ -1,5 +1,5 @@
-const backendAPI = 'http://localhost:3000'
-// const backendAPI = 'https://backend-fitness-guru.herokuapp.com'
+// const backendAPI = 'http://localhost:3000'
+const backendAPI = 'https://backend-fitness-guru.herokuapp.com'
 
 export function createToken(state) {
     return fetch(backendAPI+'/login/', {
